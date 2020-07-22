@@ -1,0 +1,135 @@
+// accordion component
+.accordion {
+	font-family: inherit;
+	background-color: inherit;
+	color: inherit;
+
+	// accordion heading styles (includes button)
+	.accordion__heading {
+		display: block;
+		margin: 0;
+		padding: 0;
+		font-family: inherit;
+		font-size: 100%;
+		word-break: break-word;
+	}
+
+	// reset button styles
+	.accordion__toggle {
+		border: none;
+		position: relative;
+		background: none;
+		background-color: none;
+		margin: 0;
+		padding: 0;
+		cursor: pointer;
+		font-size: inherit;
+		text-align: left;
+
+		// add spacing to button label (internal text)
+		.toggle__label {
+			word-break: break-word;
+		}
+
+		// style icon + adjust for reduced motion
+		$icon-size: 26px;
+		.toggle__icon {
+			position: relative;
+			top: 6px;
+			width: $icon-size;
+			height: $icon-size;
+			transform: rotate(0);
+			transform-origin: center;
+			transition: all 0.3s ease-in-out;
+
+			// rotate
+			&.rotated {
+				transform: rotate(180deg);
+			}
+		}
+	}
+
+	// accordion content
+	.accordion__content {
+		margin: 0;
+		padding: 0;
+	}
+
+	// accordion_input
+	&.accordion__input {
+
+		// input[type=checkbox]
+		.accordion__checkbox {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			margin: -1px;
+			clip: rect(0, 0, 0, 0);
+			clip: rect(0 0 0 0);
+			overflow: hidden;
+			white-space: nowrap;
+
+			+ .accordion__heading {
+				position: relative;
+				display: inline;
+				padding-bottom: 6px;
+
+				&:before {
+					content: "";
+					position: relative;
+					display: inline-block;
+					margin-right: 6px;
+					margin-bottom: 4px;
+					border-left: 3px solid currentColor;
+					border-bottom: 3px solid currentColor;
+					transform: rotate(-45deg);
+					transform-origin: center center;
+					height: 6px;
+					width: 12px;
+					opacity: 0;
+				}
+
+				&:after {
+					content: "";
+					position: absolute;
+					display: block;
+					left: 0;
+					bottom: 0;
+					width: calc(100% - 18px);
+					margin-left: 18px;
+					height: 3px;
+					background-color: currentColor;
+					opacity: 0;
+				}
+			}
+
+			&:checked {
+				+ .accordion__heading {
+					&:before {
+						opacity: 1;
+					}
+				}
+			}
+
+			&:focus {
+				 + .accordion__heading {
+					 &:after {
+						 opacity: 1;
+					 }
+				 }
+			}
+		}
+	}
+}
+
+// eliminate transition for accessibility support
+@media (prefers-reduced-motion) {
+	.accordion {
+		// enforce instant rotation for button icon
+		.accordion__toggle {
+			.toggle__icon {
+				transition: all 1ms ease-in-out;
+			}
+		}
+	}
+}
