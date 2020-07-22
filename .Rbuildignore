@@ -7,3 +7,7 @@
 ^\.cache$
 ^\.github$
 ^CODE_OF_CONDUCT\.md$
+^dev$
+^inst/iceComponents/src$
+^\.postcssrc$
+^\.babelrc$
