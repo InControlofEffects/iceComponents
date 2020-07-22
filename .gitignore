@@ -1,0 +1,6 @@
+.Rhistory
+.RData
+.Rproj.user
+.DS_STORE
+node_modules
+.cache

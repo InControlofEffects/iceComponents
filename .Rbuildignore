@@ -1,0 +1,9 @@
+^LICENSE\.md$
+^\.Rhistory$
+^\.RData$
+^\.Rproj\.user$
+^\.DS_STORE$
+^node_modules$
+^\.cache$
+^\.github$
+^CODE_OF_CONDUCT\.md$
