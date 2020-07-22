@@ -1,0 +1,35 @@
+{
+	"name": "iceComponents",
+	"version": "0.0.1",
+	"author": "davidruvolo51 <davidruvolo51@gmail.com>",
+	"license": "MIT",
+	"keywords": [
+		"css",
+		"r",
+		"shiny"
+	],
+	"scripts": {
+		"shiny": "Rscript -e \"shiny::runApp(appDir = 'dev/shiny-dev/', launch.browser = FALSE, port = 8000)\"",
+		"dev": "parcel inst/iceComponents/src/index.js -d inst/iceComponents -o inst/iceComponents/iceComponents.min.js --no-cache --no-source-maps",
+		"build": "parcel build inst/iceComponents/src/index.js -d inst/iceComponents -o inst/iceComponents/iceComponents.min.js --no-cache --no-source-maps",
+		"start": "concurrently \"npm run shiny\" \"npm run dev\""
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.10.4",
+		"@babel/core": "^7.10.4",
+		"@babel/plugin-transform-runtime": "^7.10.4",
+		"@babel/preset-env": "^7.10.4",
+		"@babel/preset-react": "^7.10.4",
+		"autoprefixer": "^9.8.4",
+		"babel-preset-minify": "^0.5.1",
+		"concurrently": "^5.2.0",
+		"cssnano": "^4.1.10",
+		"parcel": "1.12.4",
+		"postcss-modules": "^1.5.0",
+		"sass": "^1.26.10"
+	},
+	"repository": "https://github.com/InControlofEffects/iceComponents.git",
+	"bugs": {
+		"url": "https://github.com/InControlofEffects/iceComponents/issues"
+	}
+}
