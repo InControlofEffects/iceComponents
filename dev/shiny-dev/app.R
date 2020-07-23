@@ -2,7 +2,7 @@
 #' FILE: app.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-07-22
+#' MODIFIED: 2020-07-23
 #' PURPOSE: a dev app for developing and debugging components
 #' STATUS: ongoing
 #' PACKAGES: see below
@@ -33,10 +33,8 @@ suppressPackageStartupMessages({
 })
 
 # load component
-source("../../R/accordion.R")
-source("../../R/accordion_input.R")
-source("../../R/helpers_accordion.R")
-source("../../R/helpers_accordion_input.R")
+source("../../R/checkbox_group.R")
+source("../../R/helpers_checkbox_group.R")
 
 # add resource path
 addResourcePath(
@@ -51,6 +49,10 @@ addResourcePath(
 # ui
 ui <- tagList(
     tags$head(
+        tags$meta(
+            name = "viewport",
+            content = "width=device-width, initial-scale=1"
+        ),
         tags$link(
             rel = "stylesheet",
             href = "iceComponents/iceComponents.min.css"
@@ -58,33 +60,47 @@ ui <- tagList(
         tags$style(
             "html, body {
                 font-family: Helvetica;
+            }",
+            "main {
+                width: 90%;
+                max-width: 972px;
+                margin: 0 auto;
             }"
-        )
+        ),
+        tags$title("Test")
     ),
     tags$main(
         tags$h2("Accordions"),
         tags$p("Accordion (standard)"),
-        accordion(
-            inputId = "shiny",
-            title = "What is Shiny?",
-            html = tagList(
-                tags$p("Shiny is a ...."),
-                tags$cite("@RStudio")
-            )
-        ),
-        tags$p("Accordion (input)"),
-        accordion_input(
-            inputId = "shiny",
-            title = "Shiny",
-            html = tagList(
-                tags$p("Shiny is a ..."),
-                tags$cite("@RStudio")
+        checkbox_group(
+            inputId = "pizza",
+            title = "Select your favorite pizza topping",
+            caption = "Choose 1 or More",
+            choices = c(
+                "Pepperoni",
+                "Tomatoes",
+                "Cheese",
+                "Olives",
+                "Chilli"
+            ),
+            # checked = FALSE
+            checked = c(
+                TRUE,
+                TRUE,
+                FALSE,
+                TRUE,
+                FALSE
             )
         ),
         tags$button(
             id = "reset",
             class = "shiny-bound-input action-button",
-            "Reset Accordions"
+            "Reset"
+        ),
+        tags$button(
+            id = "clear",
+            class = "shiny-bound-input action-button",
+            "Clear"
         )
     ),
     tags$script(src = "iceComponents/iceComponents.min.js")
@@ -93,11 +109,15 @@ ui <- tagList(
 # server
 server <- function(input, output, session) {
     observe({
-        print(input$shiny)
+        print(input$pizza)
     })
 
     observeEvent(input$reset, {
-        reset_accordion_input("shiny")
+        reset_checkbox_group(inputId = "pizza")
+    })
+
+    observeEvent(input$clear, {
+        clear_checkbox_group(inputId = "pizza")
     })
 }
 

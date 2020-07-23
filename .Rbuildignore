@@ -11,3 +11,8 @@
 ^inst/iceComponents/src$
 ^\.postcssrc$
 ^\.babelrc$
+^\.code-workspace$
+^package\.json$
+^yarn-error\.log$
+^iceComponents\.code-workspace$
+^yarn\.lock$
