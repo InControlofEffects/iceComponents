@@ -13,7 +13,7 @@
 #'
 #' @param inputId a unique ID for the accordion component
 #' @param title a text string containing a title for the collapsible section
-#' @param html an html element or a list of html elements
+#' @param content an html element or a list of html elements
 #' @param checked a logical argument that indicates if the item should be
 #'      selected by default (default: FALSE)
 #' @param class a string containing css classes. Using this argument, you can
@@ -24,9 +24,8 @@
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
-#'   library(accessibleshiny)
 #'   ui <- tagList(
-#'     accessibleshiny::use_accessibleshiny(),
+#'     iceComponents::use_iceComponents(),
 #'     tags$head(
 #'       tags$style(
 #'         "#what-is-shiny {
@@ -38,11 +37,11 @@
 #'       id = "main",
 #'       class = "main",
 #'       tags$h2("Is Shiny your favorite R technology?"),
-#'       accordion_input(
+#'       iceComponents::accordion_input(
 #'         inputId = "what-is-shiny",
 #'         title = "Shiny",
 #'         checked = TRUE,
-#'         html = tagList(
+#'         content = tagList(
 #'           tags$p(
 #'             "Shiny is an R package that makes it easy to build",
 #'             "interactive web apps straight from R. You can host",
@@ -65,7 +64,7 @@
 accordion_input <- function(
     inputId,
     title,
-    html,
+    content,
     checked = FALSE,
     class = "accordion__style__a"
 ) {
@@ -73,7 +72,7 @@ accordion_input <- function(
     # validate
     if (!is.character(inputId)) stop("argument 'inputId' must be a string")
     if (!is.character(title)) stop("argument 'title' must be a string")
-    if (is.null(html)) stop("argument 'html' cannot be null")
+    if (is.null(content)) stop("argument 'content' cannot be null")
     if (!is.logical(checked)) stop("argument 'checked' must be TRUE or FALSE")
 
     # define ids
@@ -91,7 +90,7 @@ accordion_input <- function(
         ),
         accordion_input_helpers$content(
             ids = ids,
-            html = html
+            content = content
         )
     )
 
@@ -115,11 +114,10 @@ accordion_input <- function(
 #'
 #' @param inputId the of of the component to reset
 #'
-#' @keywords iceComponents accordion input reset
 #' @importFrom shiny getDefaultReactiveDomain
 #' @export
 reset_accordion_input <- function(inputId) {
-    session <- getDefaultReactiveDomain()
+    session <- shiny::getDefaultReactiveDomain()
     session$sendInputMessage(
         inputId = inputId,
         message = "reset"
