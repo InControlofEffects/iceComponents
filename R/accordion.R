@@ -12,6 +12,10 @@
 #' @param html an html element or a list of html elements
 #' @param heading_level adjust the HTML heading level; default is "h3". Use
 #'      on of the following headings: h1, h2, h3, h4, h5, h6
+#' @param class a string containing css classes. Using this argument, you can
+#'      pass your own class names or use one of the classes made available by
+#'      this package: "accordion__style__a" (styling used in the app). Use
+#'      `class = NULL`, to return a minimally styled component.
 #'
 #' **Notes on `heading_level`** By default, the title is rendered into
 #' a <h3> element. This element may not always work in all
@@ -61,7 +65,13 @@
 #' @keywords accessibleshiny accordion collapsible content
 #' @return Create an accordion component
 #' @export
-accordion <- function(inputId, title, html, heading_level = "h3") {
+accordion <- function(
+    inputId,
+    title,
+    html,
+    heading_level = "h3",
+    class = "accordion__style__a"
+) {
 
     # validate
     if (!is.character(inputId)) stop("argument 'inputId' must be a string")
@@ -97,6 +107,32 @@ accordion <- function(inputId, title, html, heading_level = "h3") {
         )
     )
 
+    # append class (if applicable)
+    if (!is.null(class)) {
+        el$attribs$class <- paste0(
+            el$attrib$class, " ", class
+        )
+    }
+
     # return
     return(el)
+}
+
+
+#' \code{reset_accordion}
+#'
+#' A server-side function that resets the accordion component to it's
+#' default statue (closed).
+#'
+#' @param inputId the of of the component to reset
+#'
+#' @keywords iceComponents accordion reset
+#' @importFrom shiny getDefaultReactiveDomain
+#' @export
+reset_accordion <- function(inputId) {
+    session <- getDefaultReactiveDomain()
+    session$sendInputMessage(
+        inputId = inputId,
+        message = "reset"
+    )
 }

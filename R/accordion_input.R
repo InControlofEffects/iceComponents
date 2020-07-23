@@ -16,6 +16,10 @@
 #' @param html an html element or a list of html elements
 #' @param checked a logical argument that indicates if the item should be
 #'      selected by default (default: FALSE)
+#' @param class a string containing css classes. Using this argument, you can
+#'      pass your own class names or use one of the classes made available by
+#'      this package: "accordion__style__a" (styling used in the app). Use
+#'      `class = NULL`, to return a minimally styled component.
 #'
 #' @examples
 #' if (interactive()) {
@@ -58,7 +62,13 @@
 #' @keywords iceComponents accordion input
 #' @return Create an accordion component that is also a checkbox input
 #' @export
-accordion_input <- function(inputId, title, html, checked = FALSE) {
+accordion_input <- function(
+    inputId,
+    title,
+    html,
+    checked = FALSE,
+    class = "accordion__style__a"
+) {
 
     # validate
     if (!is.character(inputId)) stop("argument 'inputId' must be a string")
@@ -73,6 +83,7 @@ accordion_input <- function(inputId, title, html, checked = FALSE) {
     el <- tags$div(
         id = ids$group,
         class = "accordion accordion__input",
+        `data-accordion-initial-state` = tolower(checked),
         accordion_input_helpers$heading(
             ids = ids,
             title = title,
@@ -83,6 +94,13 @@ accordion_input <- function(inputId, title, html, checked = FALSE) {
             html = html
         )
     )
+
+    # append class (if applicable)
+    if (!is.null(class)) {
+        el$attribs$class <- paste0(
+            el$attrib$class, " ", class
+        )
+    }
 
     # return
     return(el)

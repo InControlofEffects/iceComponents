@@ -34,13 +34,10 @@ accordion_helpers$set_html_ids <- function(inputId) {
 #' @importFrom rheroicons outline
 #' @noRd
 accordion_helpers$heading <- function(ids, title, heading_level) {
-    tagList(
-        # <h*>
-        tags[[heading_level]](
-            id = ids$heading_id,
-            class = "accordion__heading",
-            `data-accordion-group` = ids$group
-        ),
+    tags[[heading_level]](
+        id = ids$heading_id,
+        class = "accordion__heading",
+        `data-accordion-group` = ids$group,
         # <button>
         tags$button(
             id = ids$button_id,

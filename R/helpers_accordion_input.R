@@ -17,7 +17,8 @@ accordion_input_helpers$set_html_ids <- function(inputId) {
         group = inputId,
         checkbox_id = ns("accordionInput"),
         button_id = ns("accordionBtn"),
-        content_id = ns("accordionSection")
+        content_id = ns("accordionSection"),
+        label_id = ns("accordionInputLabel")
     )
 }
 
@@ -48,6 +49,7 @@ accordion_input_helpers$heading <- function(ids, title, checked) {
         i, 
         # <label>
         tags$label(
+            id = ids$label_id,
             `for` = ids$checkbox_id,
             class = "accordion__heading",
             title
@@ -57,6 +59,7 @@ accordion_input_helpers$heading <- function(ids, title, checked) {
             id = ids$button_id,
             class = "accordion__toggle",
             `aria-controls` = ids$content_id,
+            `aria-labelledby` = ids$label_id,
             `aria-expanded` = "false",
             rheroicons::outline$chevron_down(
                 aria_hidden = TRUE,
@@ -79,7 +82,7 @@ accordion_input_helpers$content <- function(ids, html) {
         id = ids$content_id,
         role = "region",
         class = "accordion__content",
-        `aria-labelledby` = ids$heading_id,
+        `aria-labelledby` = ids$label_id,
         hidden = "",
         html
     )
