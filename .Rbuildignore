@@ -17,3 +17,4 @@
 ^iceComponents\.code-workspace$
 ^yarn\.lock$
 ^\.travis\.yml$
+^incontrolofeffects\.png$

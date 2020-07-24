@@ -36,7 +36,8 @@ rignore <- c(
     "iceComponents.code-workspace",
     "package.json",
     "yarn-error.log",
-    "yarn.lock"
+    "yarn.lock",
+    "incontrolofeffects.png"
 )
 usethis::use_git_ignore(ignores = gitignore)
 usethis::use_build_ignore(files = rignore)
