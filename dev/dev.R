@@ -2,7 +2,7 @@
 #' FILE: dev.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-07-23
+#' MODIFIED: 2020-07-24
 #' PURPOSE: package manager
 #' STATUS: in.progress
 #' PACKAGES: NA
@@ -104,7 +104,6 @@ usethis::use_build_ignore(files = rignore)
 usethis::use_package(package = "shiny", min_version = TRUE)
 usethis::use_package(package = "htmltools", min_version = TRUE)
 usethis::use_package(package = "rheroicons", min_version = TRUE)
-
 
 # document
 devtools::check_man()

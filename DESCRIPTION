@@ -19,5 +19,4 @@ Imports:
     htmltools (>= 0.5.0),
     rheroicons (>= 0.1.4),
     shiny (>= 1.5.0)
-Suggests: 
-    testthat
+Remotes: davidruvolo51/rheroicons
