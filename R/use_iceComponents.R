@@ -2,9 +2,8 @@
 #'
 #' Client-side function for initiating package resources
 #'
-#' @importFrom shiny htmlDependency
 #' @examples
-#' if(interactive) {
+#' if(interactive()) {
 #'   library(shiny)
 #'   ui <- tagList(
 #'     use_iceComponents(),
@@ -17,7 +16,7 @@
 #' }
 #' @export
 use_iceComponents <- function() {
-    htmlDependency(
+    htmltools::htmlDependency(
         version = "0.0.1",
         name = "iceComponents",
         src = "iceComponents/",

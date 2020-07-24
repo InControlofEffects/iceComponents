@@ -1,6 +1,10 @@
-# add resources
+#' onLoad
+#'
+#' Set resource path when package is called
+#'
+#' @noRd
 .onLoad <- function(libname, pkgname) {
-    addResourcePath(
+    shiny::addResourcePath(
         prefix = "iceComponents",
         directoryPath = system.file(
             "iceComponents",
@@ -9,7 +13,11 @@
     )
 }
 
-# remove resources
+#' onUnload
+#'
+#' Package cleanup
+#'
+#' @noRd
 .onUnload <- function(libname, pkgname) {
-    removeResourcePath(prefix = "iceComponents")
+    shiny::removeResourcePath(prefix = "iceComponents")
 }

@@ -2,7 +2,7 @@
 // FILE: _accordion.js
 // AUTHOR: David Ruvolo
 // CREATED: 2020-07-08
-// MODIFIED: 2020-07-22
+// MODIFIED: 2020-07-23
 // PURPOSE: accordion input component binding
 // DEPENDENCIES: Shiny assets
 // STATUS: in.progress
@@ -36,10 +36,10 @@ $.extend(AccordionInput, {
     // subscribe: create an register DOM events
     subscribe: function(el, callback) {
 
-        // onClick: toggle accordion state
-        $(el).on("click", "button.accordion__toggle", function(e) {
-            var btn = $(this);
-            var icon = btn.find(".toggle__icon");
+        // define function that handles state
+        function toggleAccordion() {
+            var btn = $(el).find(".accordion__toggle");
+            var icon = $(el).find(".toggle__icon");
             var section = $(el).find(".accordion__content");
 
             // toggle: component state + ARIA attributes
@@ -52,10 +52,35 @@ $.extend(AccordionInput, {
                 section.attr("hidden", "");
                 icon.removeClass("rotated");
             }
+        }
+
+        // onFocus
+        $(el).on("focusin", function(e) {
+            $(el).addClass("accordion__focused");
+        });
+
+        // onBlur
+        $(el).on("focusout", function(e) {
+            $(el).removeClass("accordion__focused");
+        });
+
+        // onClick: toggle accordion state
+        $(el).on("click", "button.accordion__toggle", function(e) {
+            toggleAccordion();
         });
 
         // onClick: return checkbox input
         $(el).on("change", "input.accordion__checkbox", function(e) {
+
+            // add class name to parent container
+            var isChecked = $(this).prop("checked");
+            if (isChecked) {
+                $(el).addClass("accordion__checked");
+            } else {
+                $(el).removeClass("accordion__checked");
+            }
+
+            // run callback
             callback();
         });
     },
@@ -65,13 +90,21 @@ $.extend(AccordionInput, {
 
         // reset_accordion_input
         if (message === "reset") {
-            var btn = $(el).find(".accordion__toggle");
-            var icon = btn.find(".toggle__icon");
-            var section = $(el).find(".accordion__content");
-            btn.attr("aria-expanded", "false");
-            section.attr("hidden", "");
-            icon.removeClass("rotated");
-            $(el).find(".accordion__checkbox").prop("checked", false);
+            
+            // close accordion
+            $(el).find(".accordion__toggle").attr("aria-expanded", "false");
+            $(el).find(".accordion__content").attr("hidden", "");
+            $(el).find(".toggle__icon").removeClass("rotated");
+            
+            // reset accordion to default selected state
+            var initial_state = !($(el).attr("data-accordion-initial-state"));
+            if (initial_state) {
+                $(el).find(".accordion__checkbox").prop("checked", true);
+                $(el).addClass("accordion__checked");
+            } else {
+                $(el).find(".accordion__checkbox").prop("checked", false);
+                $(el).removeClass("accordion__checked");
+            }
         }
 
     },

@@ -13,16 +13,19 @@
 #'
 #' @param inputId a unique ID for the accordion component
 #' @param title a text string containing a title for the collapsible section
-#' @param html an html element or a list of html elements
+#' @param content an html element or a list of html elements
 #' @param checked a logical argument that indicates if the item should be
 #'      selected by default (default: FALSE)
+#' @param class a string containing css classes. Using this argument, you can
+#'      pass your own class names or use one of the classes made available by
+#'      this package: "accordion__style__a" (styling used in the app). Use
+#'      `class = NULL`, to return a minimally styled component.
 #'
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
-#'   library(accessibleshiny)
 #'   ui <- tagList(
-#'     accessibleshiny::use_accessibleshiny(),
+#'     iceComponents::use_iceComponents(),
 #'     tags$head(
 #'       tags$style(
 #'         "#what-is-shiny {
@@ -34,11 +37,11 @@
 #'       id = "main",
 #'       class = "main",
 #'       tags$h2("Is Shiny your favorite R technology?"),
-#'       accordion_input(
+#'       iceComponents::accordion_input(
 #'         inputId = "what-is-shiny",
 #'         title = "Shiny",
 #'         checked = TRUE,
-#'         html = tagList(
+#'         content = tagList(
 #'           tags$p(
 #'             "Shiny is an R package that makes it easy to build",
 #'             "interactive web apps straight from R. You can host",
@@ -58,12 +61,18 @@
 #' @keywords iceComponents accordion input
 #' @return Create an accordion component that is also a checkbox input
 #' @export
-accordion_input <- function(inputId, title, html, checked = FALSE) {
+accordion_input <- function(
+    inputId,
+    title,
+    content,
+    checked = FALSE,
+    class = "accordion__style__a"
+) {
 
     # validate
     if (!is.character(inputId)) stop("argument 'inputId' must be a string")
     if (!is.character(title)) stop("argument 'title' must be a string")
-    if (is.null(html)) stop("argument 'html' cannot be null")
+    if (is.null(content)) stop("argument 'content' cannot be null")
     if (!is.logical(checked)) stop("argument 'checked' must be TRUE or FALSE")
 
     # define ids
@@ -73,6 +82,7 @@ accordion_input <- function(inputId, title, html, checked = FALSE) {
     el <- tags$div(
         id = ids$group,
         class = "accordion accordion__input",
+        `data-accordion-initial-state` = tolower(checked),
         accordion_input_helpers$heading(
             ids = ids,
             title = title,
@@ -80,9 +90,16 @@ accordion_input <- function(inputId, title, html, checked = FALSE) {
         ),
         accordion_input_helpers$content(
             ids = ids,
-            html = html
+            content = content
         )
     )
+
+    # append class (if applicable)
+    if (!is.null(class)) {
+        el$attribs$class <- paste0(
+            el$attrib$class, " ", class
+        )
+    }
 
     # return
     return(el)
@@ -97,11 +114,10 @@ accordion_input <- function(inputId, title, html, checked = FALSE) {
 #'
 #' @param inputId the of of the component to reset
 #'
-#' @keywords iceComponents accordion input reset
 #' @importFrom shiny getDefaultReactiveDomain
 #' @export
 reset_accordion_input <- function(inputId) {
-    session <- getDefaultReactiveDomain()
+    session <- shiny::getDefaultReactiveDomain()
     session$sendInputMessage(
         inputId = inputId,
         message = "reset"

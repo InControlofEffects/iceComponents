@@ -1,1 +1,17 @@
-@import "_accordion";
+
+// define vars
+$dark: #252525;
+$text: #3f454b;
+$primary: hsla(231, 41%, 47%, 1);
+$primary-light: hsla(231, 41%, 47%, 0.2);
+$light: #f6f6f6;
+$semi-light: #c2cad6;
+$border-radius: 6px;
+$shadow: hsla(0, 0%, 0%, 0.2);
+$primary-box-shadow: 0 0 6px 2px $primary;
+$box-shadow: 0 0 6px 4px hsla(0, 0%, 0%, 0.2);
+$leftOffest: 21px;
+$breakpoint: 972px;
+
+// import components
+@import "_accordion", "_checkbox_group";

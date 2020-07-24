@@ -2,7 +2,7 @@
 // FILE: _accordion.js
 // AUTHOR: David Ruvolo
 // CREATED: 2020-07-08
-// MODIFIED: 2020-07-22
+// MODIFIED: 2020-07-23
 // PURPOSE: accordion button input binding
 // DEPENDENCIES: Shiny assets
 // STATUS: in.progress
@@ -22,26 +22,26 @@ $.extend(Accordion, {
         return $(scope).find(".accordion");
     },
 
-    // initialize: null
+    // initialize: return state if needed in the server (i.e., isOpen)
     initialize: function(el) {
-        return null;
+        return $(el).find("button.accordion__toggle").attr("aria-expanded") === true;
     },
 
-    // getValue: null
+    // getValue: return state if needed (i.e., isOpen)
     getValue: function(el) {
-        return null;
+        return $(el).find("button.accordion__toggle").attr("aria-expanded") === true;
     },
 
     // subscribe: create an register DOM events
     subscribe: function(el, callback) {
 
-        // pull elements
-        var btn = $(el).find(".accordion__toggle");
-        var icon = btn.find(".toggle__icon");
-        var section = $(el).find(".accordion__content");
-        
-        // onClick event
-        btn.on("click", function(e) {
+        // define function that handles state
+        function toggleAccordion() {
+
+            // find elements
+            var btn = $(el).find(".accordion__toggle");
+            var icon = $(el).find(".toggle__icon");
+            var section = $(el).find(".accordion__content");
 
             // toggle: component state + ARIA attributes
             if (btn.attr("aria-expanded") === "false") {
@@ -56,17 +56,34 @@ $.extend(Accordion, {
 
             // return state (if needed in the server)
             callback();
+        }
+
+        // onFocus
+        $(el).on("focusin", function(e) {
+            $(el).addClass("accordion__focused");
+        });
+
+        // onBlur
+        $(el).on("focusout", function(e) {
+            $(el).removeClass("accordion__focused");
+        });
+        
+        
+        // onClick
+        $(el).on("click", "button.accordion__toggle", function(e) {
+            toggleAccordion();
         });
     },
 
-    // receiveMessage: reset_accordion
-    receiveMessage: function(el) {
-        var btn = $(el).find(".accordion__toggle");
-        var icon = btn.find(".toggle__icon");
-        var section = $(el).find(".accordion__content");
-        btn.attr("aria-expanded", "false");
-        section.attr("hidden", "");
-        icon.removeClass("rotated");
+    // receiveMessage: triggered by server-side functions
+    receiveMessage: function(el, message) {
+
+        // reset accordion to it's default closed state
+        if (message === "reset") {
+            $(el).find(".accordion__toggle").attr("aria-expanded", "false");
+            $(el).find(".accordion__content").attr("hidden", "");
+            $(el).find(".toggle__icon").removeClass("rotated");
+        }
     },
 
     // unsubscribe: clean up
