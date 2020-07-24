@@ -2,7 +2,6 @@
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.com/InControlofEffects/iceComponents.svg?branch=master)](https://travis-ci.com/InControlofEffects/iceComponents)
-[![R build status](https://github.com/InControlofEffects/iceComponents/workflows/R-CMD-check/badge.svg)](https://github.com/InControlofEffects/iceComponents/actions)
 <!-- badges: end -->
 
 # iceComponents
