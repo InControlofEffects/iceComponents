@@ -15,7 +15,7 @@ This package includes several of the components used in the application. The com
 You can install the released version of iceComponents using the devtools package.
 
 ``` r
-devtools::install_github("https://github.com/InControlofEffects/iceComponents@prod")
+devtools::install_github("InControlofEffects/iceComponents@prod")
 ```
 
 ## Use
