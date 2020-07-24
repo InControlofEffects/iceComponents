@@ -66,7 +66,6 @@ accordion_helpers$heading <- function(ids, title, heading_level) {
 accordion_helpers$content <- function(ids, content) {
     tags$section(
         id = ids$content_id,
-        role = "region",
         class = "accordion__content",
         `aria-labelledby` = ids$heading_id,
         hidden = "",

@@ -79,7 +79,6 @@ accordion_input_helpers$heading <- function(ids, title, checked) {
 accordion_input_helpers$content <- function(ids, content) {
     tags$section(
         id = ids$content_id,
-        role = "region",
         class = "accordion__content",
         `aria-labelledby` = ids$label_id,
         hidden = "",
