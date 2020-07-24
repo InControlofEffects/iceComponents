@@ -23,7 +23,9 @@ gitignore <- c(
     ".Rproj.user",
     ".DS_STORE",
     "node_modules",
-    ".cache"
+    ".cache",
+    "yarn.lock",
+    "yarn-error.log"
 )
 
 # set rbuild ignore files
@@ -35,8 +37,6 @@ rignore <- c(
     ".babelrc",
     "iceComponents.code-workspace",
     "package.json",
-    "yarn-error.log",
-    "yarn.lock",
     "incontrolofeffects.png"
 )
 usethis::use_git_ignore(ignores = gitignore)

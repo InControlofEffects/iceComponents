@@ -1,7 +1,7 @@
 ![The In Control of Effects project](incontrolofeffects.png)
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.com/InControlofEffects/iceComponents.svg?branch=master)](https://travis-ci.com/InControlofEffects/iceComponents)
+[![Build Status](https://travis-ci.com/InControlofEffects/iceComponents.svg?token=nbvsGFZ6SFL5RUxtUKJb&branch=prod)](https://travis-ci.com/InControlofEffects/iceComponents)
 <!-- badges: end -->
 
 # iceComponents
@@ -18,3 +18,24 @@ You can install the released version of iceComponents using the devtools package
 devtools::install_github("https://github.com/InControlofEffects/iceComponents@prod")
 ```
 
+## Use
+
+The `iceComponents` package provides a few custom UI components and a few Shiny server functions.
+
+### ShinyUI
+
+| Function | Arguments | Description |
+| :------- | :-------- | :------------
+| `use_iceComponents` | --- | Load package assets into the client (required)
+| `accordion()` | `inputId`, `title`, `content`, `heading_level`, `class` | Create a collapsible section
+| `accordion_input()` | `inputId`, `title`, `content`, `checked`, `class` | Create a collapsible section that also acts as a checkbox input
+| `checkbox_group()` | `inputId`, `title`, `caption`, `choices`, `values`, `checked` | Create a series of checkboxes
+
+### ShinyServer
+
+| Function | Arguments | Description |
+| :------- | :-------- | :------------
+| `reset_accordion()` | `inputId` | Reset accordion component to it's initial state (i.e., closed)
+| `reset_accordion_input()` | `inputId` | Reset accordion component to it's initial state (i.e., closed) and initial checked state
+| `reset_checkbox_group()`  | `inputId` | Reset a checkbox group to the initial checked state
+| `clear_checkbox_group()`  | `inputId` | Forces all checkboxes to unchecked
