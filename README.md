@@ -2,6 +2,7 @@
 # iceComponents
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.com/InControlofEffects/iceComponents.svg?branch=master)](https://travis-ci.com/InControlofEffects/iceComponents)
 <!-- badges: end -->
 
 The goal of iceComponents is to ...

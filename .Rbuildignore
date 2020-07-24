@@ -16,3 +16,4 @@
 ^yarn-error\.log$
 ^iceComponents\.code-workspace$
 ^yarn\.lock$
+^\.travis\.yml$

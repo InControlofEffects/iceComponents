@@ -54,6 +54,7 @@ usethis::use_build_ignore(files = rignore)
 #' usethis::use_mit_license(name = "In Control of Effects")
 #' usethis::use_code_of_conduct()
 #' usethis::use_readme_md()
+#' usethis::use_travis()
 
 #' inst/
 #' sapply(
@@ -101,7 +102,7 @@ usethis::use_build_ignore(files = rignore)
 # declare dependencies (pkgs)
 usethis::use_package(package = "shiny", min_version = TRUE)
 usethis::use_package(package = "htmltools", min_version = TRUE)
-usethis::use_package(package = "rheroicons")
+usethis::use_package(package = "rheroicons", min_version = TRUE)
 
 
 # document
