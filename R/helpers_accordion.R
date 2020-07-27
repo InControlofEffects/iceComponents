@@ -9,10 +9,10 @@ accordion_helpers <- list()
 #' set_html_ids
 #' Define a function that generates the IDs and data attributes for properly
 #' linking elements across helper functions
-#' @param inputId a user defined ID
+#' @param inputId a user defined
 #' @noRd
 accordion_helpers$set_html_ids <- function(inputId) {
-    ns <- NS(namespace = inputId)
+    ns <- shiny::NS(namespace = inputId)
     ids <- list(
         group = inputId,
         heading_id = ns("accordionHeading"),

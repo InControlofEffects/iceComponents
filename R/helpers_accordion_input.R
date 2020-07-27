@@ -12,7 +12,7 @@ accordion_input_helpers <- list()
 #' @param inputId a user defined ID
 #' @noRd
 accordion_input_helpers$set_html_ids <- function(inputId) {
-    ns <- NS(namespace = inputId)
+    ns <- shiny::NS(namespace = inputId)
     list(
         group = inputId,
         checkbox_id = ns("accordionInput"),
