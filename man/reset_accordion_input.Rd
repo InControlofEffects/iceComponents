@@ -7,10 +7,10 @@
 reset_accordion_input(inputId)
 }
 \arguments{
-\item{inputId}{the of of the component to reset}
+\item{inputId}{the ID of the component to reset}
 }
 \description{
 A server-side function that resets the accordion input component to it's
-default statue. Resetting the component will uncheck the import, close
-the accordion (if open), and reset the input value.
+default statue. The collapsible will be closed and the input will be
+checked depending on the default settting.
 }

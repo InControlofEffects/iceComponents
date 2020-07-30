@@ -2,6 +2,7 @@
 
 <!-- badges: start -->
 [![Build Status](https://travis-ci.com/InControlofEffects/iceComponents.svg?token=nbvsGFZ6SFL5RUxtUKJb&branch=prod)](https://travis-ci.com/InControlofEffects/iceComponents)
+[![R build status](https://github.com/InControlofEffects/iceComponents/workflows/R-CMD-check/badge.svg)](https://github.com/InControlofEffects/iceComponents/actions)
 <!-- badges: end -->
 
 # iceComponents
@@ -12,10 +13,10 @@ This package includes several of the components used in the application. The com
 
 ## Installation
 
-You can install the released version of iceComponents using the devtools package.
+You can install iceComponents using the devtools package.
 
 ``` r
-devtools::install_github("InControlofEffects/iceComponents@prod")
+devtools::install_github("InControlofEffects/iceComponents")
 ```
 
 ## Use
@@ -37,5 +38,6 @@ The `iceComponents` package provides a few custom UI components and a few Shiny 
 | :------- | :-------- | :------------
 | `reset_accordion()` | `inputId` | Reset accordion component to it's initial state (i.e., closed)
 | `reset_accordion_input()` | `inputId` | Reset accordion component to it's initial state (i.e., closed) and initial checked state
+| `clear_accordion_input()` | `inputId` | Similar to reset, but will override default state. Accordion will be closed and input will be unchecked
 | `reset_checkbox_group()`  | `inputId` | Reset a checkbox group to the initial checked state
-| `clear_checkbox_group()`  | `inputId` | Forces all checkboxes to unchecked
+| `clear_checkbox_group()`  | `inputId` | Unchecks all checkboxes

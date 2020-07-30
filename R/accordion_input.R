@@ -52,13 +52,30 @@
 #'           ),
 #'           tags$cite("Rstudio.org")
 #'         )
+#'       ),
+#'       tags$button(
+#'         id = "reset",
+#'         class = "shiny-bound-input action-button",
+#'         "Reset Accordion"
+#'       ),
+#'       tags$button(
+#'         id = "clear",
+#'         class = "shiny-bound-input action-button",
+#'         "Clear Accordion"
 #'       )
 #'     )
 #'   )
-#'   server <- function(input, output) {}
+#'   server <- function(input, output) {
+#'     observeEvent(input$reset, {
+#'       iceComponents::reset_accordion_input(inputId = "what-is-shiny")
+#'     })
+#'     observeEvent(input$clear, {
+#'       iceComponents::clear_accordion_input(inputId = "what-is-shiny")
+#'     })
+#'   }
 #'   shinyApp(ui, server)
 #' }
-#' @keywords iceComponents accordion input
+#'
 #' @return Create an accordion component that is also a checkbox input
 #' @export
 accordion_input <- function(
@@ -109,17 +126,33 @@ accordion_input <- function(
 #' \code{reset_accordion_input}
 #'
 #' A server-side function that resets the accordion input component to it's
-#' default statue. Resetting the component will uncheck the import, close
-#' the accordion (if open), and reset the input value.
+#' default statue. The collapsible will be closed and the input will be
+#' checked depending on the default settting.
 #'
-#' @param inputId the of of the component to reset
+#' @param inputId the ID of the component to reset
 #'
-#' @importFrom shiny getDefaultReactiveDomain
 #' @export
 reset_accordion_input <- function(inputId) {
     session <- shiny::getDefaultReactiveDomain()
     session$sendInputMessage(
         inputId = inputId,
-        message = "reset"
+        message = "resetAccordionInput"
+    )
+}
+
+#' \code{clear_accordion_input}
+#'
+#' A server-side function that clears the accordion input component
+#' regardless of the default setting. Running this function will collapse
+#' the accordion and uncheck the input.
+#'
+#' @param inputId the ID of the component to clear
+#'
+#' @export
+clear_accordion_input <- function(inputId) {
+    session <- shiny::getDefaultReactiveDomain()
+    session$sendInputMessage(
+        inputId = inputId,
+        message = "clearAccordionInput"
     )
 }
