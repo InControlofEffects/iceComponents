@@ -2,7 +2,7 @@
 // FILE: _accordion.js
 // AUTHOR: David Ruvolo
 // CREATED: 2020-07-08
-// MODIFIED: 2020-07-23
+// MODIFIED: 2020-07-30
 // PURPOSE: accordion input component binding
 // DEPENDENCIES: Shiny assets
 // STATUS: in.progress
@@ -21,10 +21,11 @@ $.extend(AccordionInput, {
         return $(scope).find(".accordion__input");
     },
 
-    // initialize: null
+    // initialize: evaluate checked state at render and apply classes accordingly
     initialize: function(el) {
-        var value = $(el).find(".accordion__checkbox").prop("checked");
-        return value;
+        var isChecked = $(el).find(".accordion__checkbox").prop("checked") === "true";
+        isChecked ? $(el).addClass("accordion__checked") : $(el).removeClass("accordion__checked");
+        return isChecked;
     },
 
     // getValue: null
@@ -71,7 +72,7 @@ $.extend(AccordionInput, {
 
         // onClick: return checkbox input
         $(el).on("change", "input.accordion__checkbox", function(e) {
-
+            console.log("running change")
             // add class name to parent container
             var isChecked = $(this).prop("checked");
             if (isChecked) {
@@ -89,22 +90,24 @@ $.extend(AccordionInput, {
     receiveMessage: function(el, message) {
 
         // reset_accordion_input
-        if (message === "reset") {
-            
-            // close accordion
+        if (message === "resetAccordionInput") {
             $(el).find(".accordion__toggle").attr("aria-expanded", "false");
-            $(el).find(".accordion__content").attr("hidden", "");
+            $(el).find(".accordion__content").attr("hidden","");
             $(el).find(".toggle__icon").removeClass("rotated");
             
-            // reset accordion to default selected state
-            var initial_state = !($(el).attr("data-accordion-initial-state"));
-            if (initial_state) {
-                $(el).find(".accordion__checkbox").prop("checked", true);
-                $(el).addClass("accordion__checked");
-            } else {
-                $(el).find(".accordion__checkbox").prop("checked", false);
-                $(el).removeClass("accordion__checked");
-            }
+            // get default state
+            var isTrueByDefault = $(el).attr("data-accordion-initial-state") === "true";
+            $(el).find(".accordion__checkbox").prop("checked", isTrueByDefault);
+            $(el).find("input.accordion__checkbox").trigger("change");
+        }
+
+        // clear_accordion_input
+        if (message === "clearAccordionInput") {
+            $(el).find(".accordion__toggle").attr("aria-expanded", "false");
+            $(el).find(".accordion__content").attr("hidden","");
+            $(el).find(".toggle__icon").removeClass("rotated");
+            $(el).find(".accordion__checkbox").prop("checked", false);
+            $(el).find("input.accordion__checkbox").trigger("change");
         }
 
     },

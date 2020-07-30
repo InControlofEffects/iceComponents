@@ -2,7 +2,7 @@
 #' FILE: app.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-07-23
+#' MODIFIED: 2020-07-30
 #' PURPOSE: a dev app for developing and debugging components
 #' STATUS: ongoing
 #' PACKAGES: see below
@@ -33,8 +33,8 @@ suppressPackageStartupMessages({
 })
 
 # load component
-source("../../R/checkbox_group.R")
-source("../../R/helpers_checkbox_group.R")
+source("../../R/accordion_input.R")
+source("../../R/helpers_accordion_input.R")
 
 # add resource path
 addResourcePath(
@@ -72,24 +72,16 @@ ui <- tagList(
     tags$main(
         tags$h2("Accordions"),
         tags$p("Accordion (standard)"),
-        checkbox_group(
-            inputId = "pizza",
-            title = "Select your favorite pizza topping",
-            caption = "Choose 1 or More",
-            choices = c(
-                "Pepperoni",
-                "Tomatoes",
-                "Cheese",
-                "Olives",
-                "Chilli"
-            ),
-            # checked = FALSE
-            checked = c(
-                TRUE,
-                TRUE,
-                FALSE,
-                TRUE,
-                FALSE
+        accordion_input(
+            inputId = "anticholinergic",
+            title = "Dry mouth and constipation",
+            content = tags$p(
+                "Antipsychotic medications can block acetylcholine",
+                " a type of chemical in the brain.",
+                " Blocking it can affect involuntary muscle",
+                " movements (for example the ones in the bladder and",
+                " the guts) and various bodily functions (for",
+                " example saliva production)."
             )
         ),
         tags$button(
@@ -109,15 +101,15 @@ ui <- tagList(
 # server
 server <- function(input, output, session) {
     observe({
-        print(input$pizza)
+        print(input$anticholinergic)
     })
 
     observeEvent(input$reset, {
-        reset_checkbox_group(inputId = "pizza")
+        reset_accordion_input(inputId = "anticholinergic")
     })
 
     observeEvent(input$clear, {
-        clear_checkbox_group(inputId = "pizza")
+        clear_accordion_input(inputId = "anticholinergic")
     })
 }
 

@@ -29,5 +29,51 @@ checkbox_group(
 \description{
 Create a custom checkbox input group
 }
+\examples{
+if (interactive()) {
+  librar(shiny)
+  ui <- tagList(
+    iceComponents::use_iceComponents(),
+    tags$h2("Checkbox group example"),
+    iceComponents::checkbox_group(
+      inputId = "pizza_toppings",
+      title = "Your favorite pizza toppings",
+      caption = "Select your favorite toppings",
+      choices = c(
+        "Pepperoni",
+        "Mushrooms",
+        "Onions",
+        "Sausage",
+        "Bacon",
+        "Extra Cheese",
+        "Black Olives",
+      ),
+      checked = TRUE
+    ),
+    tags$button(
+      id = "reset",
+      class = "shiny-bound-input action-button",
+      "Reset Toppings"
+    ),
+    tags$button(
+      id = "clear",
+      class = "shiny-bound-input action-button",
+      "Clear Selections"
+    )
+  )
+  server <- function(input, output) {
+    observe({
+      print(input$pizza_toppings)
+    })
+    observeEvent(input$reset, {
+      iceComponents::reset_checkbox_group(inputId = "pizza_toppings")
+    })
+    observeEvent(input$clear, {
+      iceComponents::clear_checkbox_group(inputId = "pizza_toppings")
+    })
+  }
+  shinyApp(ui, server)
+}
+}
 \keyword{checkboxgroup}
 \keyword{iceComponents}

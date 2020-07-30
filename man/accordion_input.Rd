@@ -73,13 +73,28 @@ if (interactive()) {
           ),
           tags$cite("Rstudio.org")
         )
+      ),
+      tags$button(
+        id = "reset",
+        class = "shiny-bound-input action-button",
+        "Reset Accordion"
+      ),
+      tags$button(
+        id = "clear",
+        class = "shiny-bound-input action-button",
+        "Clear Accordion"
       )
     )
   )
-  server <- function(input, output) {}
+  server <- function(input, output) {
+    observeEvent(input$reset, {
+      iceComponents::reset_accordion_input(inputId = "what-is-shiny")
+    })
+    observeEvent(input$clear, {
+      iceComponents::clear_accordion_input(inputId = "what-is-shiny")
+    })
+  }
   shinyApp(ui, server)
 }
+
 }
-\keyword{accordion}
-\keyword{iceComponents}
-\keyword{input}
