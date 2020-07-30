@@ -55,7 +55,7 @@
 #'   shinyApp(ui, server)
 #' }
 #' @keywords iceComponents checkboxgroup
-#' @importFrom shiny tagList tags
+#' @importFrom htmltools tags tagList
 #' @export
 checkbox_group <- function(
     inputId,

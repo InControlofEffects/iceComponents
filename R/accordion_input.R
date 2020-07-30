@@ -76,6 +76,7 @@
 #'   shinyApp(ui, server)
 #' }
 #'
+#' @importFrom htmltools tags tagList
 #' @return Create an accordion component that is also a checkbox input
 #' @export
 accordion_input <- function(

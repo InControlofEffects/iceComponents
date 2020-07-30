@@ -15,7 +15,7 @@ checkbox_group_helpers <- list()
 #' @param choice a name for the option
 #' @param value an value for the option (is choice by default)
 #' @param checked if TRUE, then input will be checked at render
-#' @importFrom htmltools tags
+#' @importFrom htmltools tags tagList
 #' @noRd
 checkbox_group_helpers$checkbox_option <- function(
     inputId,

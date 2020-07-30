@@ -1,5 +1,5 @@
 Package: iceComponents
-Title: What the Package Does (One Line, Title Case)
+Title: A set of custom components used in the In Control of Effects application
 Version: 0.0.1
 Authors@R: 
     person(
@@ -9,7 +9,7 @@ Authors@R:
         email = "first.last@example.com",
         comment = c(ORCID = "0000-0002-5745-5298")
     )
-Description: What the package does (one paragraph).
+Description: The `iceComponents` package is a primary dependency for the shiny application `iceApp` and part of the In Control of Effects project. This package includes several of the components that are used in the Shiny app. The components used in this package are designed specifically for the application, but they can be adapted for use in your applications.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -19,4 +19,5 @@ Imports:
     htmltools (>= 0.5.0),
     rheroicons (>= 0.1.4),
     shiny (>= 1.5.0)
-Remotes: davidruvolo51/rheroicons
+Remotes: 
+    davidruvolo51/rheroicons

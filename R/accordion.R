@@ -62,6 +62,7 @@
 #'   shinyApp(ui, server)
 #' }
 #' @keywords iceComponents accordion collapsible content
+#' @importFrom htmltools tags tagList
 #' @return Create an accordion component
 #' @export
 accordion <- function(
