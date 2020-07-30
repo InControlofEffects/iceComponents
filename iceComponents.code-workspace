@@ -4,5 +4,9 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"languageToolLinter.languageTool.ignoredWordsInWorkspace": [
+			"function  | arguments | description"
+		]
+	}
 }
