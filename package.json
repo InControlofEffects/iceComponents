@@ -12,7 +12,8 @@
 		"shiny": "Rscript -e \"shiny::runApp(appDir = 'dev/shiny-dev/', launch.browser = FALSE, port = 8000)\"",
 		"dev": "parcel inst/iceComponents/src/index.js -d inst/iceComponents -o inst/iceComponents/iceComponents.min.js --no-cache --no-source-maps",
 		"build": "parcel build inst/iceComponents/src/index.js -d inst/iceComponents -o inst/iceComponents/iceComponents.min.js --no-cache --no-source-maps",
-		"start": "concurrently \"npm run shiny\" \"npm run dev\""
+		"start": "concurrently \"npm run shiny\" \"npm run dev\"",
+		"clean": "rm -rf inst/iceComponents/iceComponents.min.*"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.10.4",
