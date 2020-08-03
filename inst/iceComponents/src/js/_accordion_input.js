@@ -2,10 +2,10 @@
 // FILE: _accordion.js
 // AUTHOR: David Ruvolo
 // CREATED: 2020-07-08
-// MODIFIED: 2020-07-30
+// MODIFIED: 2020-08-03
 // PURPOSE: accordion input component binding
 // DEPENDENCIES: Shiny assets
-// STATUS: in.progress
+// STATUS: working
 // COMMENTS: This input binding toggles all instances of the accordion
 // component. This script will create a new constructor that extends the
 // Shiny.InputBinding() and adjust the state of the component when the
@@ -72,7 +72,7 @@ $.extend(AccordionInput, {
 
         // onClick: return checkbox input
         $(el).on("change", "input.accordion__checkbox", function(e) {
-            console.log("running change")
+
             // add class name to parent container
             var isChecked = $(this).prop("checked");
             if (isChecked) {

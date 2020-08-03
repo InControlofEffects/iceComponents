@@ -2,10 +2,10 @@
 // FILE: _checkbox_group.js
 // AUTHOR: David Ruvolo
 // CREATED: 2020-07-23
-// MODIFIED: 2020-07-23
+// MODIFIED: 2020-08-03
 // PURPOSE: Shiny input binding for custom checkbox input group
 // DEPENDENCIES: NA
-// STATUS: in.progress
+// STATUS: working
 // COMMENTS: NA
 ////////////////////////////////////////////////////////////////////////////////
 

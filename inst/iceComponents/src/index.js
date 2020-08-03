@@ -2,10 +2,10 @@
 // FILE: index.js
 // AUTHOR: David Ruvolo
 // CREATED: 2020-07-22
-// MODIFIED: 2020-07-23
+// MODIFIED: 2020-08-03
 // PURPOSE: primary script for package assets
 // DEPENDENCIES: NA
-// STATUS: in.progress
+// STATUS: working
 // COMMENTS: NA
 ////////////////////////////////////////////////////////////////////////////////
 

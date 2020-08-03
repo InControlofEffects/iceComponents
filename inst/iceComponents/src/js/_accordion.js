@@ -2,10 +2,10 @@
 // FILE: _accordion.js
 // AUTHOR: David Ruvolo
 // CREATED: 2020-07-08
-// MODIFIED: 2020-07-23
+// MODIFIED: 2020-08-03
 // PURPOSE: accordion button input binding
 // DEPENDENCIES: Shiny assets
-// STATUS: in.progress
+// STATUS: working
 // COMMENTS: This input binding toggles all instances of the accordion
 // component. This script will create a new constructor that extends the
 // Shiny.InputBinding() and adjust the state of the component when the
