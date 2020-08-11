@@ -2,7 +2,7 @@
 #' FILE: dev.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-07-24
+#' MODIFIED: 2020-08-11
 #' PURPOSE: package manager
 #' STATUS: in.progress
 #' PACKAGES: NA
@@ -16,7 +16,8 @@
 #' usethis::use_travis()
 #' usethis::use_namespace()
 #' usethis::use_description()
-
+#' usethis::use_news_md()
+#' usethis::use_testthat()
 
 # set git ignore files
 gitignore <- c(
@@ -47,6 +48,8 @@ usethis::use_build_ignore(files = rignore)
 #' ~ 1 ~
 #' Maintaining Package
 
+# install
+remotes::install_github("davidruvolo51/rheroicons")
 
 # declare dependencies (pkgs)
 usethis::use_package(package = "shiny", min_version = TRUE)
@@ -58,3 +61,4 @@ devtools::check_man()
 
 # check
 devtools::check()
+devtools::test()

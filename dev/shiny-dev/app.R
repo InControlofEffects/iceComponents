@@ -2,7 +2,7 @@
 #' FILE: app.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-07-30
+#' MODIFIED: 2020-08-11
 #' PURPOSE: a dev app for developing and debugging components
 #' STATUS: ongoing
 #' PACKAGES: see below
@@ -33,8 +33,7 @@ suppressPackageStartupMessages({
 })
 
 # load component
-source("../../R/accordion_input.R")
-source("../../R/helpers_accordion_input.R")
+devtools::load_all()
 
 # add resource path
 addResourcePath(
