@@ -17,8 +17,10 @@ import "./scss/index.scss"
 import Accordion from "./js/_accordion"
 import AccordionInput from "./js/_accordion_input"
 import CheckboxGroup from "./js/_checkbox_group"
+import fieldInput from "./js/_field_inputs"
 
 // register
 Shiny.inputBindings.register(Accordion);
 Shiny.inputBindings.register(AccordionInput);
 Shiny.inputBindings.register(CheckboxGroup);
+Shiny.inputBindings.register(fieldInput);

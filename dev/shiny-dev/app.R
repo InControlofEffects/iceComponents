@@ -59,6 +59,7 @@ ui <- tagList(
         tags$style(
             "html, body {
                 font-family: Helvetica;
+                font-size: 16pt;
             }",
             "main {
                 width: 90%;
@@ -69,19 +70,18 @@ ui <- tagList(
         tags$title("Test")
     ),
     tags$main(
-        tags$h2("Accordions"),
-        tags$p("Accordion (standard)"),
-        accordion_input(
-            inputId = "anticholinergic",
-            title = "Dry mouth and constipation",
-            content = tags$p(
-                "Antipsychotic medications can block acetylcholine",
-                " a type of chemical in the brain.",
-                " Blocking it can affect involuntary muscle",
-                " movements (for example the ones in the bladder and",
-                " the guts) and various bodily functions (for",
-                " example saliva production)."
-            )
+        tags$h2("iceComponents Development & Testing"),
+        input(
+            inputId = "user",
+            type = "text",
+            label = "Username",
+            icon = rheroicons::icons$user_circle()
+        ),
+        input(
+            inputId = "pwd",
+            type = "password",
+            label = "Password",
+            icon = rheroicons::icons$lock_closed()
         ),
         tags$button(
             id = "reset",
@@ -89,9 +89,9 @@ ui <- tagList(
             "Reset"
         ),
         tags$button(
-            id = "clear",
+            id = "invalidate",
             class = "shiny-bound-input action-button",
-            "Clear"
+            "Invalidate"
         )
     ),
     tags$script(src = "iceComponents/iceComponents.min.js")
@@ -100,15 +100,23 @@ ui <- tagList(
 # server
 server <- function(input, output, session) {
     observe({
-        print(input$anticholinergic)
+        print(input$pwd)
     })
 
     observeEvent(input$reset, {
-        reset_accordion_input(inputId = "anticholinergic")
+        reset_input(inputId = "user")
+        reset_input(inputId = "pwd")
     })
 
-    observeEvent(input$clear, {
-        clear_accordion_input(inputId = "anticholinergic")
+    observeEvent(input$invalidate, {
+        invalidate_input(
+            inputId = "user",
+            error = "username is wrong"
+        )
+        invalidate_input(
+            inputId = "pwd",
+            error = "Password is wrong"
+        )
     })
 }
 

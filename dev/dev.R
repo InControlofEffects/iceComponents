@@ -2,7 +2,7 @@
 #' FILE: dev.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-08-11
+#' MODIFIED: 2020-08-17
 #' PURPOSE: package manager
 #' STATUS: in.progress
 #' PACKAGES: NA
@@ -62,3 +62,6 @@ devtools::check_man()
 # check
 devtools::check()
 devtools::test()
+
+# run dev app
+shiny::runApp(appDir = "dev/shiny-dev/", port = 8000, launch.browser = FALSE)

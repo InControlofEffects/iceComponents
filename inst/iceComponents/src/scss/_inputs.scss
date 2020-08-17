@@ -1,0 +1,87 @@
+// input labels
+.field__label {
+    display: block;
+    color: $text;
+    margin-bottom: 6px;
+}
+
+// input elements
+.field__input {
+    appearance: none;
+    display: block;
+    font-size: 12pt;
+    color: $dark;
+    padding: 8px;
+    padding-left: 12px;
+    border: none;
+    border-bottom: 2px solid $text;
+    background-color: $light;
+    border-radius: 0;
+    width: 100%;
+
+    // focus events
+    &:focus {
+        border-color: $primary;
+        outline: $primary solid 3px;
+    }
+
+    // invalid
+    &[aria-invalid="true"] {
+        border-color: $error;
+    }
+}
+
+// error messages
+.field__status {
+    color: $error;
+    display: block;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+// if icon is present
+.field__icon__input {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $light;
+    border-bottom: 2px solid $text;
+    color: $text;
+    margin-bottom: 24px;
+
+    .rheroicons {
+        margin: 0 12px;
+    }
+
+    .field__input {
+        margin: 0;
+        border: 0;
+    }
+
+    // add focus to parent element
+    &.field__focus {
+        outline: $primary solid 3px;
+
+        .field__input {
+            &:focus {
+                border-color: transparent;
+                outline: none;
+            }
+        }
+    }
+
+    // add invalid to parent element
+    &.field__invalid {
+        outline: $error solid 3px;
+        border-bottom-color: $primary;
+
+        .field__input {
+            &[aria-invalid="true"]{
+                border-color: transparent;
+            }
+        }
+    }
+}
