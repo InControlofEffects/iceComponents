@@ -75,7 +75,7 @@ invalidate_input <- function(inputId, error) {
 #' leaving user entered input text untouched. Use `reset_input` for
 #' removing everything.
 #'
-#' @param InputId Id of the component to clear
+#' @param inputId Id of the component to clear
 #'
 #' @export
 clear_input <- function(inputId) {
