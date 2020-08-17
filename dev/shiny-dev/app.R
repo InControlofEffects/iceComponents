@@ -84,6 +84,11 @@ ui <- tagList(
             icon = rheroicons::icons$lock_closed()
         ),
         tags$button(
+            id = "clear",
+            class = "shiny-bound-input action-button",
+            "Clear"
+        ),
+        tags$button(
             id = "reset",
             class = "shiny-bound-input action-button",
             "Reset"
@@ -101,6 +106,11 @@ ui <- tagList(
 server <- function(input, output, session) {
     observe({
         print(input$pwd)
+    })
+
+    observeEvent(input$clear, {
+        clear_input(inputId = "user")
+        clear_input(inputId = "pwd")
     })
 
     observeEvent(input$reset, {

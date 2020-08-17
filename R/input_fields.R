@@ -69,6 +69,25 @@ invalidate_input <- function(inputId, error) {
     )
 }
 
+#' Clear Input
+#'
+#' Remove all invalidation attributes from an input element while
+#' leaving user entered input text untouched. Use `reset_input` for
+#' removing everything.
+#'
+#' @param inputId Id of the component to clear
+#'
+#' @export
+clear_input <- function(inputId) {
+    session <- shiny::getDefaultReactiveDomain()
+    session$sendInputMessage(
+        inputId = inputId,
+        message = list(
+            type = "clearInput"
+        )
+    )
+}
+
 
 #' Reset Input
 #'

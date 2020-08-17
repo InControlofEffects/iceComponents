@@ -38,6 +38,7 @@ ui <- tagList(
 | `accordion` | `inputId`, `title`, `content`, `heading_level`, `class` | Create a collapsible section.
 | `accordion_input` | `inputId`, `title`, `content`, `checked`, `class` | Create a collapsible section with checkbox input.
 | `checkbox_group` | `inputId`, `title`, `caption`, `choices`, `values`, `checked` | Create a series of checkboxes
+| `input` | `inputId`, `label`, `type`, `icon` | create an input element
 
 ### Shiny Server
 
@@ -48,3 +49,6 @@ ui <- tagList(
 | `clear_accordion_input` | `inputId` | Force close and uncheck input (will override defaults)
 | `reset_checkbox_group`  | `inputId` | Reset a checkbox group to the initial checked state
 | `clear_checkbox_group`  | `inputId` | Unchecks all checkboxes
+| `invalidate_input` | `inputId`, `error` | Invalidate an input element and display an error message
+| `clear_input` | `inputId` | Removes form validation attributes/classes, but leaves text entered by user
+| `reset_input` | `inputId` | Clear input text and form validation attributes/classes

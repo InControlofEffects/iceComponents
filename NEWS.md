@@ -1,6 +1,7 @@
 # iceComponents 0.0.21
 
 * Added new components: `input` for creating text and password inputs (mainly for the login form)
+* Added helper function for removing all form validation attributes and classes (`clear_input`)
 
 
 # iceComponents 0.0.2

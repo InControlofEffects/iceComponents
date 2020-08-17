@@ -76,7 +76,7 @@ $.extend(fieldInput, {
 
             // add event that clears error message after typing
             $(el).on("keypress", function(e) {
-                if (e.target.value.length > 3) {
+                if (e.target.value.length > 1) {
                     $(el).removeAttr("aria-invalid");
                     $(el).parent().removeClass("field__invalid");
                     $(errorElem).text("");
@@ -85,9 +85,24 @@ $.extend(fieldInput, {
             });
         }
 
+        // clearInput
+        // when called via clear_input, all invalidation properties will
+        // be removed while leaving user input text untouched
+        if (message.type == "clearInput") {
+            $(el).removeAttr("aria-invalid");
+            $(el).parent().removeClass("field__invalid");
+
+            // reset error message
+            var errorElem = "#" + $(el).attr("aria-describedby").split(" ")[1];
+            $(errorElem).text("");
+        }
+
         // reset input 
         // when called via reset_password_input, the following code
-        // will remove the invalid property and clear the error message
+        // will remove the invalid property, clear the error message,
+        // and clear the input value. This should be used for hard
+        // resets. Use clearInput for removing invalidation data, but
+        // leaving the input value.
         if (message.type === "resetInput") {
             $(el).val("");
             $(el).removeAttr("aria-invalid");
