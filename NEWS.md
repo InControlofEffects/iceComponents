@@ -1,3 +1,8 @@
+# iceComponents 0.0.21
+
+* Added new components: `input` for creating text and password inputs (mainly for the login form)
+
+
 # iceComponents 0.0.2
 
 * Added a `NEWS.md` file to track changes to the package.
