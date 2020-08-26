@@ -2,10 +2,10 @@
 #' FILE: dev.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-08-17
+#' MODIFIED: 2020-08-25
 #' PURPOSE: package manager
-#' STATUS: in.progress
-#' PACKAGES: NA
+#' STATUS: ongoing
+#' PACKAGES: usethis; remotes; pkgbump
 #' COMMENTS: NA
 #'////////////////////////////////////////////////////////////////////////////
 
@@ -65,3 +65,15 @@ devtools::test()
 
 # run dev app
 shiny::runApp(appDir = "dev/shiny-dev/", port = 8000, launch.browser = FALSE)
+
+
+# pkgbump
+pkgbump::set_pkgbump(
+    files = c(
+        "DESCRIPTION",
+        "package.json",
+        "R/use_iceComponents.R"
+    )
+)
+
+pkgbump::pkgbump(version = "0.0.22")

@@ -18,3 +18,4 @@
 ^yarn\.lock$
 ^\.travis\.yml$
 ^incontrolofeffects\.png$
+^\.pkgbump\.json$

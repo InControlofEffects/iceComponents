@@ -1,6 +1,7 @@
 ![The In Control of Effects project](incontrolofeffects.png)
 
 <!-- badges: start -->
+![version](https://img.shields.io/github/package-json/v/InControlofEffects/iceComponents/prod?color=%235ABCB9)
 [![Build Status](https://travis-ci.com/InControlofEffects/iceComponents.svg?token=nbvsGFZ6SFL5RUxtUKJb&branch=prod)](https://travis-ci.com/InControlofEffects/iceComponents)
 ![R-CMD-check](https://github.com/InControlofEffects/iceComponents/workflows/R-CMD-check/badge.svg)
 <!-- badges: end -->
