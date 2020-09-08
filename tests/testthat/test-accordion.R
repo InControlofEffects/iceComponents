@@ -2,7 +2,7 @@
 #' FILE: test-accordion.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-08-11
-#' MODIFIED: 2020-08-11
+#' MODIFIED: 2020-09-08
 #' PURPOSE: unit testing for accordion component (non-input)
 #' STATUS: on.going
 #' PACKAGES: testthat; iceComponents
@@ -39,17 +39,16 @@ test_that("Component has required parent elements", {
 #' ~ 2 ~
 #' Validate Heading
 #' Confirm that the heading element has the required elements
-#' Markup: heading > button > span + icon
+#' Markup: heading > button > span (icon is ignored)
 test_that("Heading has required child elements", {
     markup <- c(
         default_component$children[[1]]$name,
         default_component$children[[1]]$children[[1]]$name,
-        default_component$children[[1]]$children[[1]]$children[[1]]$name,
-        default_component$children[[1]]$children[[1]]$children[[2]]$name
+        default_component$children[[1]]$children[[1]]$children[[1]]$name
     )
     expect_equal(
         object = markup,
-        expected = c("h3", "button", "span", "svg"),
+        expected = c("h3", "button", "span"),
         label = "Heading does not have expected child elements"
     )
 })

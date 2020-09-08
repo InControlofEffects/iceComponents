@@ -48,10 +48,10 @@ accordion_helpers$heading <- function(ids, title, heading_level) {
                 class = "toggle__label",
                 title
             ),
-            rheroicons::icons$chevron_down(
+            rheroicons::rheroicon(
+                name = "chevron_down",
                 type = "outline",
-                aria_hidden = TRUE,
-                class = "toggle__icon"
+                classnames = "toggle__icon"
             )
         )
     )

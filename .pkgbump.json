@@ -1,10 +1,10 @@
 {
   "name": "pkgbump.config",
-  "updated": "2020-08-26 08:04:04",
+  "updated": "2020-09-08 15:35:41",
   "n": 3,
   "files": ["DESCRIPTION", "package.json", "R/use_iceComponents.R"],
   "patterns": {
-    "R": "version = | version=",
+    "R": "version = .\\d+.\\d+.\\d+.|version=.\\d+.\\d+.\\d+.",
     "DESCRIPTION": "Version:"
   }
 }

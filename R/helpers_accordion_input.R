@@ -67,10 +67,10 @@ accordion_input_helpers$heading <- function(ids, title, checked) {
             `aria-controls` = ids$content_id,
             `aria-labelledby` = ids$label_id,
             `aria-expanded` = "false",
-            rheroicons::icons$chevron_down(
+            rheroicons::rheroicon(
+                name = "chevron_down",
                 type = "outline",
-                aria_hidden = TRUE,
-                class = "toggle__icon"
+                classnames = "toggle__icon"
             )
         )
     )

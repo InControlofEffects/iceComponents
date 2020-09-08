@@ -76,4 +76,4 @@ pkgbump::set_pkgbump(
     )
 )
 
-pkgbump::pkgbump(version = "0.0.22")
+pkgbump::pkgbump(version = "0.0.23")

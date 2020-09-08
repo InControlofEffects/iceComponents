@@ -2,7 +2,7 @@
 #' FILE: test-accordion-input.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-08-11
-#' MODIFIED: 2020-08-11
+#' MODIFIED: 2020-09-08
 #' PURPOSE: tests for accordion input component
 #' STATUS: on.going
 #' PACKAGES: testthat; iceComponents
@@ -35,7 +35,7 @@ el <- accordion_input(
 #' Validate Markup
 #' confirm that the default rendering returns the proper elements
 #' div >
-#'     - input + label + button > icon
+#'     - input + label + button (icon is not evaluated
 #'     - section
 test_that("Markup assessment", {
     expect_equal(
@@ -43,10 +43,9 @@ test_that("Markup assessment", {
             el$name,
             el$children[[1]][[1]]$attribs$type,
             el$children[[1]][[2]]$name,
-            el$children[[1]][[3]]$name,
-            el$children[[1]][[3]]$children[[1]]$name
+            el$children[[1]][[3]]$name
         ),
-        expected = c("div", "checkbox", "label", "button", "svg"),
+        expected = c("div", "checkbox", "label", "button"),
         label = "Default markup is not correct"
     )
 })

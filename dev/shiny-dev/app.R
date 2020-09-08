@@ -1,4 +1,4 @@
-#'////////////////////////////////////////////////////////////////////////////
+#' ////////////////////////////////////////////////////////////////////////////
 #' FILE: app.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
@@ -24,7 +24,7 @@
 #' 4. Use accessiblity tools (I am using WAVE)
 #' 5. Write unit tests (a test for every option)
 #'
-#'////////////////////////////////////////////////////////////////////////////
+#' ////////////////////////////////////////////////////////////////////////////
 
 # load pkgs used by the component
 suppressPackageStartupMessages({
@@ -41,7 +41,7 @@ addResourcePath(
     directoryPath = "~/Github/iceComponents/inst/iceComponents/"
 )
 
-#'//////////////////////////////////////
+#' //////////////////////////////////////
 
 # create app
 
@@ -70,34 +70,73 @@ ui <- tagList(
         tags$title("Test")
     ),
     tags$main(
-        tags$h2("iceComponents Development & Testing"),
-        input(
-            inputId = "user",
-            type = "text",
-            label = "Username",
-            icon = rheroicons::icons$user_circle()
+        tags$h1("iceComponents Development & Testing"),
+        tags$section(
+            tags$h2("Accordion (non-input)"),
+            accordion(
+                inputId = "what-is-shiny",
+                title = "What is Shiny?",
+                content = tagList(
+                    tags$p(
+                        "Shiny is an R package that makes it easy to build ",
+                        "interactive web apps straight from R. You can host",
+                        "standalone apps on a webpage or embed them in R",
+                        "Markdown documents or build dashboards. You can also",
+                        "extend your Shiny apps with CSS themes, htmlwidgets",
+                        "and JavaScript actions."
+                    ),
+                    tags$cite("@rstudio")
+                )
+            )
         ),
-        input(
-            inputId = "pwd",
-            type = "password",
-            label = "Password",
-            icon = rheroicons::icons$lock_closed()
+        tags$section(
+            tags$h2("Accordion (input)"),
+            accordion_input(
+                inputId = "do-you-use-shiny",
+                title = "Do you like the Shiny R package?",
+                content = tagList(
+                    tags$p(
+                        "Shiny is an R package that makes it easy to build ",
+                        "interactive web apps straight from R. You can host",
+                        "standalone apps on a webpage or embed them in R",
+                        "Markdown documents or build dashboards. You can also",
+                        "extend your Shiny apps with CSS themes, htmlwidgets",
+                        "and JavaScript actions."
+                    ),
+                    tags$cite("@rstudio")
+                )
+            )
         ),
-        tags$button(
-            id = "clear",
-            class = "shiny-bound-input action-button",
-            "Clear"
+        tags$section(
+            tags$h2("Input Fields"),
+            input(
+                inputId = "user",
+                type = "text",
+                label = "Username",
+                icon = rheroicons::rheroicon(name = "user_circle")
+            ),
+            input(
+                inputId = "pwd",
+                type = "password",
+                label = "Password",
+                icon = rheroicons::rheroicon(name = "lock_closed")
+            ),
+            tags$button(
+                id = "clear",
+                class = "shiny-bound-input action-button",
+                "Clear"
+            ),
+            tags$button(
+                id = "reset",
+                class = "shiny-bound-input action-button",
+                "Reset"
+            ),
+            tags$button(
+                id = "invalidate",
+                class = "shiny-bound-input action-button",
+                "Invalidate"
+            )
         ),
-        tags$button(
-            id = "reset",
-            class = "shiny-bound-input action-button",
-            "Reset"
-        ),
-        tags$button(
-            id = "invalidate",
-            class = "shiny-bound-input action-button",
-            "Invalidate"
-        )
     ),
     tags$script(src = "iceComponents/iceComponents.min.js")
 )
