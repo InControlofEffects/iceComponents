@@ -19,3 +19,8 @@
 ^\.travis\.yml$
 ^incontrolofeffects\.png$
 ^\.pkgbump\.json$
+^config$
+^\.gitignore$
+^\.Rbuildignore$
+^postcss\.config\.js$
+^webpack\.config\.js$
