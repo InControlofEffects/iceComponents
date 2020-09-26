@@ -14,7 +14,7 @@ This package includes several of the components that are used in the Shiny app. 
 
 ## Installation
 
-You can install `iceComponents` using the `devtools` package.
+You can install `iceComponents` using the `devtools` (or `remotes`) package.
 
 ``` r
 devtools::install_github("InControlofEffects/iceComponents")

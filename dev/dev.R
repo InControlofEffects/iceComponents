@@ -2,7 +2,7 @@
 #' FILE: dev.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-08-25
+#' MODIFIED: 2020-09-26
 #' PURPOSE: package manager
 #' STATUS: ongoing
 #' PACKAGES: usethis; remotes; pkgbump
@@ -26,24 +26,30 @@ gitignore <- c(
     ".Rproj.user",
     ".DS_STORE",
     "node_modules",
-    ".cache",
-    "yarn.lock",
     "yarn-error.log"
 )
 
-# set rbuild ignore files
-rignore <- c(
-    gitignore,
-    "dev",
-    "inst/iceComponents/src",
-    ".postcssrc",
-    ".babelrc",
-    "iceComponents.code-workspace",
-    "package.json",
-    "incontrolofeffects.png"
-)
 usethis::use_git_ignore(ignores = gitignore)
-usethis::use_build_ignore(files = rignore)
+usethis::use_build_ignore(
+    files = c(
+        gitignore,
+        "config",
+        "dev",
+        "inst/iceComponents/src",
+        "node_modules",
+        ".babelrc",
+        ".gitignore",
+        ".pkgbump.json",
+        ".Rbuildignore",
+        ".travis.yml",
+        "iceComponents.code-workspace",
+        "incontrolofeffects.png",
+        "package.json",
+        "postcss.config.js",
+        "webpack.config.js",
+        "yarn.lock"
+    )
+)
 
 #' ~ 1 ~
 #' Maintaining Package
@@ -76,4 +82,4 @@ pkgbump::set_pkgbump(
     )
 )
 
-pkgbump::pkgbump(version = "0.0.23")
+pkgbump::pkgbump(version = "0.0.3")
