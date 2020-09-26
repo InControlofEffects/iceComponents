@@ -2,7 +2,7 @@
 #' FILE: app.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-08-11
+#' MODIFIED: 2020-09-26
 #' PURPOSE: a dev app for developing and debugging components
 #' STATUS: ongoing
 #' PACKAGES: see below
@@ -38,7 +38,7 @@ devtools::load_all()
 # add resource path
 addResourcePath(
     "iceComponents",
-    directoryPath = "~/Github/iceComponents/inst/iceComponents/"
+    directoryPath = "~/Github/iceComponents/inst/iceComponents/public"
 )
 
 #' //////////////////////////////////////
