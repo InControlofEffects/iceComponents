@@ -2,7 +2,7 @@
 // FILE: webpack.common.js
 // AUTHOR: David Ruvolo
 // CREATED: 2020-09-26
-// MODIFIED: 2020-09-26
+// MODIFIED: 2020-09-30
 // PURPOSE: webpack common config
 // DEPENDENCIES: see below
 // STATUS: working
@@ -11,7 +11,6 @@
 
 // load plugins
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require("webpack");
 const path = require("path");
@@ -26,9 +25,6 @@ module.exports = {
     plugins: [
         new webpack.ProgressPlugin(),
         new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            title: "Ice Components",
-        }),
         new MiniCssExtractPlugin({
             filename: "iceComponents.min.css",
             ignoreOrder: false,
