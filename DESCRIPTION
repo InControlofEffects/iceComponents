@@ -1,6 +1,6 @@
 Package: iceComponents
 Title: A set of custom components used in the In Control of Effects application
-Version: 0.0.3
+Version: 0.0.4
 Authors@R: 
     person(
         given = "David",
