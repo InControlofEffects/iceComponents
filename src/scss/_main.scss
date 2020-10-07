@@ -1,0 +1,36 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    background-color: #ffffff;
+
+    @media screen and (min-width: $breakpoint) {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $light;
+    }
+
+    .page {
+        display: block;
+        width: 85%;
+        height: auto;
+        margin: 0 auto;
+        margin-top: 125px;
+        margin-bottom: 54px;
+        background-color: #ffffff;
+
+        @media screen and (min-width: $breakpoint-sm) {
+            max-width: $breakpoint;
+            padding: 1.5em;
+            border-radius: $border-radius;
+            margin-top: 0;
+            box-sizing: content-box;
+        }
+    }
+}
