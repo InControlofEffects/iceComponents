@@ -19,7 +19,8 @@ $primary-box-shadow: 0 0 6px 2px $primary;
 $box-shadow: 0 0 6px 4px hsla(0, 0%, 0%, 0.2);
 $leftOffest: 21px;
 $breakpoint: 972px;
+$breakpoint-sm: 517px; 
 
 
 // import components
-@import "_accordion", "_checkbox_group", "_inputs";
+@import "_main", "_accordion", "_checkbox_group", "_inputs";
