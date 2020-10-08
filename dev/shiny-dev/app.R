@@ -2,7 +2,7 @@
 #' FILE: app.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-09-26
+#' MODIFIED: 2020-10-07
 #' PURPOSE: a dev app for developing and debugging components
 #' STATUS: ongoing
 #' PACKAGES: see below
@@ -45,6 +45,8 @@ addResourcePath(
 
 # create app
 
+devProgressBar <- progressbar(start = 2, max = 12)
+
 # ui
 ui <- tagList(
     tags$head(
@@ -60,18 +62,23 @@ ui <- tagList(
             "html, body {
                 font-family: Helvetica;
                 font-size: 16pt;
-            }",
-            "main {
-                width: 90%;
-                max-width: 972px;
-                margin: 0 auto;
+                padding: 0;
+                margin: 0;
             }"
         ),
         tags$title("Test")
     ),
-    tags$main(
-        tags$h1("iceComponents Development & Testing"),
-        tags$section(
+    set_doc_attribs(),
+    devProgressBar$bar(
+        inputId = "dev-progress-bar",
+        fixed = TRUE,
+        fill = "#2d7ddd"
+    ),
+    container(
+        page(
+            inputId = "accordion-section",
+            classnames = "test",
+            tags$h1("iceComponents Development & Testing"),
             tags$h2("Accordion (non-input)"),
             accordion(
                 inputId = "what-is-shiny",
@@ -87,86 +94,95 @@ ui <- tagList(
                     ),
                     tags$cite("@rstudio")
                 )
-            )
-        ),
-        tags$section(
-            tags$h2("Accordion (input)"),
-            accordion_input(
-                inputId = "do-you-use-shiny",
-                title = "Do you like the Shiny R package?",
-                content = tagList(
-                    tags$p(
-                        "Shiny is an R package that makes it easy to build ",
-                        "interactive web apps straight from R. You can host",
-                        "standalone apps on a webpage or embed them in R",
-                        "Markdown documents or build dashboards. You can also",
-                        "extend your Shiny apps with CSS themes, htmlwidgets",
-                        "and JavaScript actions."
-                    ),
-                    tags$cite("@rstudio")
-                )
-            )
-        ),
-        tags$section(
-            tags$h2("Input Fields"),
-            input(
-                inputId = "user",
-                type = "text",
-                label = "Username",
-                icon = rheroicons::rheroicon(name = "user_circle")
-            ),
-            input(
-                inputId = "pwd",
-                type = "password",
-                label = "Password",
-                icon = rheroicons::rheroicon(name = "lock_closed")
             ),
             tags$button(
-                id = "clear",
+                id = "decreaseProgressbar",
                 class = "shiny-bound-input action-button",
-                "Clear"
+                "Previous"
             ),
             tags$button(
-                id = "reset",
+                id = "updateProgressbar",
                 class = "shiny-bound-input action-button",
-                "Reset"
-            ),
-            tags$button(
-                id = "invalidate",
-                class = "shiny-bound-input action-button",
-                "Invalidate"
+                "Next"
             )
-        ),
+        )
+        #     tags$h2("Accordion (input)"),
+        #     accordion_input(
+        #         inputId = "do-you-use-shiny",
+        #         title = "Do you like the Shiny R package?",
+        #         content = tagList(
+        #             tags$p(
+        #                 "Shiny is an R package that makes it easy to build ",
+        #                 "interactive web apps straight from R. You can host",
+        #                 "standalone apps on a webpage or embed them in R",
+        #                 "Markdown documents or build dashboards. You can also",
+        #                 "extend your Shiny apps with CSS themes, htmlwidgets",
+        #                 "and JavaScript actions."
+        #             ),
+        #             tags$cite("@rstudio")
+        #         )
+        #     )
+        # ),
+        # tags$section(
+        #     tags$h2("Input Fields"),
+        #     input(
+        #         inputId = "user",
+        #         type = "text",
+        #         label = "Username",
+        #         icon = rheroicons::rheroicon(name = "user_circle")
+        #     ),
+        #     input(
+        #         inputId = "pwd",
+        #         type = "password",
+        #         label = "Password",
+        #         icon = rheroicons::rheroicon(name = "lock_closed")
+        #     ),
+        #     tags$button(
+        #         id = "clear",
+        #         class = "shiny-bound-input action-button",
+        #         "Clear"
+        #     ),
+        #     tags$button(
+        #         id = "reset",
+        #         class = "shiny-bound-input action-button",
+        #         "Reset"
+        #     ),
+        #     tags$button(
+        #         id = "invalidate",
+        #         class = "shiny-bound-input action-button",
+        #         "Invalidate"
+        #     )
+        # ),
     ),
     tags$script(src = "iceComponents/iceComponents.min.js")
 )
 
 # server
 server <- function(input, output, session) {
-    observe({
-        print(input$pwd)
-    })
 
-    observeEvent(input$clear, {
-        clear_input(inputId = "user")
-        clear_input(inputId = "pwd")
-    })
+    observeEvent(input$decreaseProgressbar, devProgressBar$decrease())
+    observeEvent(input$updateProgressbar, devProgressBar$increase())
 
-    observeEvent(input$reset, {
-        reset_input(inputId = "user")
-        reset_input(inputId = "pwd")
-    })
+    # observeEvent(input$clear, {
+    #     clear_input(inputId = "user")
+    #     clear_input(inputId = "pwd")
+    # })
 
-    observeEvent(input$invalidate, {
-        invalidate_input(
-            inputId = "user",
-            error = "username is wrong"
-        )
-        invalidate_input(
-            inputId = "pwd",
-            error = "Password is wrong"
-        )
-    })
+    # observeEvent(input$reset, {
+    #     reset_input(inputId = "user")
+    #     reset_input(inputId = "pwd")
+    # })
+
+    # observeEvent(input$invalidate, {
+    #     invalidate_input(
+    #         inputId = "user",
+    #         error = "username is wrong"
+    #     )
+    #     invalidate_input(
+    #         inputId = "pwd",
+    #         error = "Password is wrong"
+    #     )
+    # })
 }
 
 

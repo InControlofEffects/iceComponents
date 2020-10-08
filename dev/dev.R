@@ -35,7 +35,7 @@ usethis::use_build_ignore(
         gitignore,
         "config",
         "dev",
-        "inst/iceComponents/src",
+        "src",
         "node_modules",
         ".babelrc",
         ".gitignore",
@@ -82,4 +82,4 @@ pkgbump::set_pkgbump(
     )
 )
 
-pkgbump::pkgbump(version = "0.0.4")
+pkgbump::pkgbump(version = "0.0.5")

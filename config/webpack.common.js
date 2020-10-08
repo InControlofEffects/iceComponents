@@ -2,7 +2,7 @@
 // FILE: webpack.common.js
 // AUTHOR: David Ruvolo
 // CREATED: 2020-09-26
-// MODIFIED: 2020-09-30
+// MODIFIED: 2020-10-07
 // PURPOSE: webpack common config
 // DEPENDENCIES: see below
 // STATUS: working
@@ -17,7 +17,7 @@ const path = require("path");
 
 // config
 module.exports = {
-    entry: "./inst/iceComponents/src/index.js",
+    entry: "./src/index.js",
     output: {
         filename: "iceComponents.min.js",
         path: path.join(__dirname, "..", "inst/iceComponents/public/"),
