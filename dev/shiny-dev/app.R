@@ -45,6 +45,8 @@ addResourcePath(
 
 # create app
 
+devProgressBar <- progressbar(start = 2, max = 12)
+
 # ui
 ui <- tagList(
     tags$head(
@@ -66,8 +68,14 @@ ui <- tagList(
         ),
         tags$title("Test")
     ),
-    main_ui(
-        page_ui(
+    set_doc_attribs(),
+    devProgressBar$bar(
+        inputId = "dev-progress-bar",
+        fixed = TRUE,
+        fill = "#2d7ddd"
+    ),
+    container(
+        page(
             inputId = "accordion-section",
             classnames = "test",
             tags$h1("iceComponents Development & Testing"),
@@ -86,9 +94,18 @@ ui <- tagList(
                     ),
                     tags$cite("@rstudio")
                 )
+            ),
+            tags$button(
+                id = "decreaseProgressbar",
+                class = "shiny-bound-input action-button",
+                "Previous"
+            ),
+            tags$button(
+                id = "updateProgressbar",
+                class = "shiny-bound-input action-button",
+                "Next"
             )
-        )#,
-        # tags$section(
+        )
         #     tags$h2("Accordion (input)"),
         #     accordion_input(
         #         inputId = "do-you-use-shiny",
@@ -142,30 +159,30 @@ ui <- tagList(
 
 # server
 server <- function(input, output, session) {
-    observe({
-        print(input$pwd)
-    })
 
-    observeEvent(input$clear, {
-        clear_input(inputId = "user")
-        clear_input(inputId = "pwd")
-    })
+    observeEvent(input$decreaseProgressbar, devProgressBar$decrease())
+    observeEvent(input$updateProgressbar, devProgressBar$increase())
 
-    observeEvent(input$reset, {
-        reset_input(inputId = "user")
-        reset_input(inputId = "pwd")
-    })
+    # observeEvent(input$clear, {
+    #     clear_input(inputId = "user")
+    #     clear_input(inputId = "pwd")
+    # })
 
-    observeEvent(input$invalidate, {
-        invalidate_input(
-            inputId = "user",
-            error = "username is wrong"
-        )
-        invalidate_input(
-            inputId = "pwd",
-            error = "Password is wrong"
-        )
-    })
+    # observeEvent(input$reset, {
+    #     reset_input(inputId = "user")
+    #     reset_input(inputId = "pwd")
+    # })
+
+    # observeEvent(input$invalidate, {
+    #     invalidate_input(
+    #         inputId = "user",
+    #         error = "username is wrong"
+    #     )
+    #     invalidate_input(
+    #         inputId = "pwd",
+    #         error = "Password is wrong"
+    #     )
+    # })
 }
 
 

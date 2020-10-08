@@ -24,3 +24,4 @@
 ^\.Rbuildignore$
 ^postcss\.config\.js$
 ^webpack\.config\.js$
+^src$
