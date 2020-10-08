@@ -25,6 +25,10 @@
         margin-bottom: 54px;
         background-color: #ffffff;
 
+        &.page__hidden {
+            display: none;
+        }
+
         @media screen and (min-width: $breakpoint-sm) {
             max-width: $breakpoint;
             padding: 1.5em;

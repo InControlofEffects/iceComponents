@@ -1,16 +1,18 @@
-#' Main Container
+#' Container
 #'
 #' Functional component for creating a new app container. Use `page_ui`,
 #' to define individual pages.
 #'
-#' @param ui Shiny UI content
+#' @param ... Shiny UI content
 #' @param classnames optional css classes to apply to the container
 #'
 #' @examples
 #' if (interactive()) {
+#'   library(shiny)
+#'   library(iceComponents)
 #'   ui <- tagList(
-#'     iceComponents::use_iceComponents(),
-#'     iceComponents::main_ui(
+#'     use_iceComponents(),
+#'     container(
 #'       classnames = "dark-theme",
 #'       tags$h1("My Application")
 #'     )
@@ -21,18 +23,10 @@
 #' }
 #'
 #' @export
-main_ui <- function(..., classnames = NULL) {
-    m <- tags$main(
-        id = "main",
-        class = "main",
-        ...
-    )
-
-    if (!is.null(classnames)) {
-        m$attribs$class <- paste0(m$attribs$class, " ", classnames)
-    }
-
-    return(m)
+container <- function(..., classnames = NULL) {
+    css <- "main"
+    if (!is.null(classnames)) css <- paste0(css, " ", classnames)
+    tags$main(id = "main", class = css, ...)
 }
 
 
@@ -46,11 +40,13 @@ main_ui <- function(..., classnames = NULL) {
 #'
 #' @examples
 #' if (interactive()) {
+#'   library(shiny)
+#'   library(iceComponents)
 #'   ui <- tagList(
-#'     iceComponents::use_iceComponents(),
-#'     iceComponents::main_ui(
+#'     use_iceComponents(),
+#'     container(
 #'       classnames = "dark-theme",
-#'       iceComponents::page_ui(
+#'       page(
 #'         tags$h1("My Application")
 #'       )
 #'     )
@@ -61,20 +57,10 @@ main_ui <- function(..., classnames = NULL) {
 #' }
 #'
 #' @export
-page_ui <- function(..., inputId, classnames = NULL) {
-
+page <- function(..., inputId, classnames = NULL) {
     stopifnot("`inputId` is missing" = !is.null(inputId))
 
     css <- "page"
-    if (!is.null(classnames)) {
-        stopifnot("`classnames` must be a string" = is.character(classnames))
-        css <- paste0(css, " ", classnames)
-    }
-
-    tags$article(
-        id = inputId,
-        class = css,
-        ...
-    )
-
+    if (!is.null(classnames)) css <- paste0(css, " ", classnames)
+    tags$article(id = inputId, class = css, ...)
 }
