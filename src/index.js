@@ -2,7 +2,7 @@
 // FILE: index.js
 // AUTHOR: David Ruvolo
 // CREATED: 2020-07-22
-// MODIFIED: 2020-10-07
+// MODIFIED: 2020-10-08
 // PURPOSE: primary script for package assets
 // DEPENDENCIES: NA
 // STATUS: working
@@ -19,6 +19,7 @@ import AccordionInput from "./js/_accordion_input"
 import CheckboxGroup from "./js/_checkbox_group"
 import fieldInput from "./js/_field_inputs"
 import setDocMeta from "./js/_set_doc_attribs"
+import Progressbar from "./js/_progressbar"
 
 // on DOMContentLoaded
 window.addEventListener("DOMContentLoaded", function(e) {
@@ -38,3 +39,4 @@ Shiny.inputBindings.register(Accordion);
 Shiny.inputBindings.register(AccordionInput);
 Shiny.inputBindings.register(CheckboxGroup);
 Shiny.inputBindings.register(fieldInput);
+Shiny.inputBindings.register(Progressbar);
