@@ -4,7 +4,7 @@
 #' to define individual pages.
 #'
 #' @param ... Shiny UI content
-#' @param classnames optional css classes to apply to the container
+#' @param class optional css classes to apply to the container
 #'
 #' @examples
 #' if (interactive()) {
@@ -13,7 +13,7 @@
 #'   ui <- tagList(
 #'     use_iceComponents(),
 #'     container(
-#'       classnames = "dark-theme",
+#'       class = "dark-theme",
 #'       tags$h1("My Application")
 #'     )
 #'   )
@@ -23,9 +23,9 @@
 #' }
 #'
 #' @export
-container <- function(..., classnames = NULL) {
+container <- function(..., class = NULL) {
     css <- "main"
-    if (!is.null(classnames)) css <- paste0(css, " ", classnames)
+    if (!is.null(class)) css <- paste0(css, " ", class)
     tags$main(id = "main", class = css, ...)
 }
 
@@ -36,7 +36,7 @@ container <- function(..., classnames = NULL) {
 #'
 #' @param ... Shiny UI content
 #' @param inputId an ID for the page (required)
-#' @param classnames apply css classes (optional)
+#' @param class apply css classes (optional)
 #'
 #' @examples
 #' if (interactive()) {
@@ -45,7 +45,7 @@ container <- function(..., classnames = NULL) {
 #'   ui <- tagList(
 #'     use_iceComponents(),
 #'     container(
-#'       classnames = "dark-theme",
+#'       class = "dark-theme",
 #'       page(
 #'         tags$h1("My Application")
 #'       )
@@ -57,10 +57,10 @@ container <- function(..., classnames = NULL) {
 #' }
 #'
 #' @export
-page <- function(..., inputId, classnames = NULL) {
+page <- function(..., inputId, class = NULL) {
     stopifnot("`inputId` is missing" = !is.null(inputId))
 
     css <- "page"
-    if (!is.null(classnames)) css <- paste0(css, " ", classnames)
+    if (!is.null(class)) css <- paste0(css, " ", class)
     tags$article(id = inputId, class = css, ...)
 }
