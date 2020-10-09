@@ -10,16 +10,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // import styles
-import "./scss/index.scss"
+import "./scss/index.scss";
 
 
 // import methods
-import Accordion from "./js/_accordion"
-import AccordionInput from "./js/_accordion_input"
-import CheckboxGroup from "./js/_checkbox_group"
-import fieldInput from "./js/_field_inputs"
-import setDocMeta from "./js/_set_doc_attribs"
-import Progressbar from "./js/_progressbar"
+import Accordion from "./js/_accordion";
+import AccordionInput from "./js/_accordion_input";
+import CheckboxGroup from "./js/_checkbox_group";
+import fieldInput from "./js/_field_inputs";
+import setDocMeta from "./js/_set_doc_attribs";
+import Progressbar from "./js/_progressbar";
+import { errorBox, errorText } from "./js/_errors";
 
 // on DOMContentLoaded
 window.addEventListener("DOMContentLoaded", function(e) {
@@ -28,9 +29,9 @@ window.addEventListener("DOMContentLoaded", function(e) {
         setDocMeta();
     }
     if (!refElem) {
-        console.error("iceComponents: document attributes are not defined")
+        console.error("iceComponents: document attributes are not defined");
     }
-}, { once: true })
+}, { once: true });
 
 
 
@@ -40,3 +41,5 @@ Shiny.inputBindings.register(AccordionInput);
 Shiny.inputBindings.register(CheckboxGroup);
 Shiny.inputBindings.register(fieldInput);
 Shiny.inputBindings.register(Progressbar);
+Shiny.inputBindings.register(errorBox);
+Shiny.inputBindings.register(errorText);
