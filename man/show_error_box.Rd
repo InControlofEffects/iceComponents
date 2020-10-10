@@ -14,3 +14,38 @@ show_error_box(inputId, error)
 \description{
 Reveal a message box and display a message
 }
+\examples{
+if (interactive()) {
+  library(shiny)
+
+  ui <- tagList(
+    iceComponents::use_iceComponents(),
+    iceComponents::container(
+      iceComponents::page(
+        tags$h2("My App"),
+        iceComponents::error_box(
+          inputId = "shiny-server-error"
+        ),
+        tags$button(
+          id = "show",
+          class = "shiny-bound-input action-button",
+          "Do Something"
+        )
+      )
+    )
+  )
+
+  server <- function() {
+    observeEvent(input$show, {
+      iceComponents::show_error_box(
+        inputId = "shiny-server-error",
+        error = "Internal Server Error (500)"
+      )
+    })
+  }
+
+  shinyApp(ui, server)
+
+}
+
+}

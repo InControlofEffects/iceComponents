@@ -4,55 +4,46 @@
 #' This element is designed to render without an message. Use the server-side
 #' function `show_error_box` to render an message into the error box, and then
 #' the `hide_error_box` to reset the error. You can further customize the error
-#' box to fit the error by choosing an icon.
+#' box to fit the error by choosing an icon made available by the `rheroicons`
+#' package.
 #'
 #' @param inputId a unique id for the error box
-#' @param classnames pass css class names
+#' @param class pass css class names
 #' @param icon_name an rheroicons icon name
-#' @param icon_type an rheroicons icon type ("output" or"solid")
+#' @param icon_type an rheroicons icon type ("output" or "solid")
 #'
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
+#'
 #'   ui <- tagList(
 #'     iceComponents::use_iceComponents(),
 #'     iceComponents::container(
 #'       iceComponents::page(
 #'         tags$h2("My App"),
+#'         tags$p("Please wait while the app loads..."),
 #'         iceComponents::error_box(
-#'           inputId = "shiny-server-error",
-#'           icon_name = "ban",
-#'           icon_type = "ouline"
-#'         ),
-#'         tags$button(
-#'           id = "show",
-#'           class = "shiny-bound-input action-button",
-#'           "Show Error"
-#'         ),
-#'         tags$button(
-#'           id = "hide",
-#'           class = "shiny-bound-input action-button",
-#'           "Hide Error"
+#'           inputId = "shiny-server-error"
 #'         )
 #'       )
 #'     )
 #'   )
 #'
 #'   server <- function() {
-#'     observeEvent(input$show, {
-#'       iceComponents::show_error_box(
-#'         inputId = "shiny-server-error",
-#'         error = "You are not authorized to do this."
-#'       )
-#'     })
+#'     err <- function() {
+#'        Sys.sleep(2)
+#'        iceComponents::show_error_box(
+#'          inputId = "shiny-server-error",
+#'          error = "Internal Server Error (500)"
+#'        )
+#'     }
 #'
-#'     observeEvent(input$hide, {
-#'       iceComponents::hide_error_box(
-#'         inputId = "shiny-server-error"
-#'       )
-#'     })
+#'     err()
+#'
 #'   }
+#'
 #'   shinyApp(ui, server)
+#'
 #' }
 #'
 #' @references
@@ -61,20 +52,12 @@
 #' @export
 error_box <- function(
     inputId,
-    classnames = NULL,
+    class = NULL,
     icon_name = "exclamation",
     icon_type = "outline"
 ) {
-    stopifnot(
-        "`inputId` is missing" = !is.null(inputId),
-        "`inputId` must be a string" = is.character(inputId),
-        "`icon_type` must be 'outline' or 'solid'" = {
-            !icon_type %in% c("outline", "solid")
-        }
-    )
-
     css <- "error__box error__hidden"
-    if (!is.null(classnames)) css <- paste0(css, " ", classnames)
+    if (!is.null(class)) css <- paste0(css, " ", class)
 
     tags$div(
         id = inputId,
@@ -93,9 +76,42 @@ error_box <- function(
 #' @param inputId ID of error to update
 #' @param error message to display
 #'
+#' @examples
+#' if (interactive()) {
+#'   library(shiny)
+#'
+#'   ui <- tagList(
+#'     iceComponents::use_iceComponents(),
+#'     iceComponents::container(
+#'       iceComponents::page(
+#'         tags$h2("My App"),
+#'         iceComponents::error_box(
+#'           inputId = "shiny-server-error"
+#'         ),
+#'         tags$button(
+#'           id = "show",
+#'           class = "shiny-bound-input action-button",
+#'           "Do Something"
+#'         )
+#'       )
+#'     )
+#'   )
+#'
+#'   server <- function() {
+#'     observeEvent(input$show, {
+#'       iceComponents::show_error_box(
+#'         inputId = "shiny-server-error",
+#'         error = "Internal Server Error (500)"
+#'       )
+#'     })
+#'   }
+#'
+#'   shinyApp(ui, server)
+#'
+#' }
+#'
 #' @export
 show_error_box <- function(inputId, error) {
-    stopifnot("`error` must be a string" = is.character(error))
     session <- shiny::getDefaultReactiveDomain()
     session$sendInputMessage(
         inputId = inputId,
@@ -112,6 +128,50 @@ show_error_box <- function(inputId, error) {
 #' Hide an error box
 #'
 #' @param inputId ID of the error box to hide
+#'
+#' @examples
+#' if (interactive()) {
+#'   library(shiny)
+#'   ui <- tagList(
+#'     iceComponents::use_iceComponents(),
+#'     iceComponents::container(
+#'       iceComponents::page(
+#'         tags$h2("My App"),
+#'         iceComponents::error_box(
+#'           inputId = "shiny-server-error"
+#'         ),
+#'         tags$button(
+#'           id = "show",
+#'           class = "shiny-bound-input action-button",
+#'           "Do Something"
+#'         ),
+#'         tags$button(
+#'           id = "hide",
+#'           class = "shiny-bound-input action-button",
+#'           "Hide Error"
+#'         )
+#'       )
+#'     )
+#'   )
+#'
+#'   server <- function() {
+#'     observeEvent(input$show, {
+#'       iceComponents::show_error_box(
+#'         inputId = "shiny-server-error",
+#'         error = "Internal Server Error (500)"
+#'       )
+#'     })
+#'
+#'     observeEvent(input$hide, {
+#'       iceComponents::hide_error_box(
+#'         inputId = "shiny-server-error"
+#'       )
+#'     })
+#'   }
+#'
+#'   shinyApp(ui, server)
+#'
+#' }
 #'
 #' @export
 hide_error_box <- function(inputId) {
