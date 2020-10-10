@@ -1,0 +1,25 @@
+.ice__card {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 16px auto;
+    box-sizing: content-box;
+    padding: 16px 12px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    background-color: #ffffff;
+    color: $text;
+    box-shadow: $box-shadow;
+
+    .rheroicons {
+        width: 30px;
+        height: 30px;
+        margin: 0 12px;
+    }
+
+    .ice__card__label {
+        word-break: normal;
+        text-overflow: ellipsis;
+    }
+}

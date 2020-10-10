@@ -16,11 +16,12 @@ import "./scss/index.scss";
 // import methods
 import Accordion from "./js/_accordion";
 import AccordionInput from "./js/_accordion_input";
+import card from "./js/_cards";
 import CheckboxGroup from "./js/_checkbox_group";
+import { errorBox, errorText } from "./js/_errors";
 import fieldInput from "./js/_field_inputs";
 import setDocMeta from "./js/_set_doc_attribs";
 import Progressbar from "./js/_progressbar";
-import { errorBox, errorText } from "./js/_errors";
 
 // on DOMContentLoaded
 window.addEventListener("DOMContentLoaded", function(e) {
@@ -38,8 +39,9 @@ window.addEventListener("DOMContentLoaded", function(e) {
 // register
 Shiny.inputBindings.register(Accordion);
 Shiny.inputBindings.register(AccordionInput);
+Shiny.inputBindings.register(card);
 Shiny.inputBindings.register(CheckboxGroup);
-Shiny.inputBindings.register(fieldInput);
-Shiny.inputBindings.register(Progressbar);
 Shiny.inputBindings.register(errorBox);
 Shiny.inputBindings.register(errorText);
+Shiny.inputBindings.register(fieldInput);
+Shiny.inputBindings.register(Progressbar);
