@@ -37,7 +37,7 @@ test_that("Default use is valid", {
 #' ~ 2 ~
 #' Css classnames are properly added
 test_that("CSS classes are properly added", {
-    p <- page(inputId = "test-page", classnames = "dark-theme hidden")
+    p <- page(inputId = "test-page", class = "dark-theme hidden")
     expect_identical(
         object = p$attribs$class,
         expected = "page dark-theme hidden",

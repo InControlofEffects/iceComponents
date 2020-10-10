@@ -37,7 +37,7 @@ test_that("Default use is valid", {
 #' ~ 2 ~
 #' Css classnames are properly added to parent element
 test_that("CSS classes are properly added", {
-    c <- container(classnames = "dark-theme hidden", tags$h1("test"))
+    c <- container(class = "dark-theme hidden", tags$h1("test"))
     expect_identical(
         object = c$attribs$class,
         expected = "main dark-theme hidden",

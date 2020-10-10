@@ -2,7 +2,7 @@
 #' FILE: app.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-10-07
+#' MODIFIED: 2020-10-10
 #' PURPOSE: a dev app for developing and debugging components
 #' STATUS: ongoing
 #' PACKAGES: see below
@@ -45,7 +45,7 @@ addResourcePath(
 
 # create app
 
-devProgressBar <- progressbar(start = 2, max = 12)
+#' devProgressBar <- progressbar(start = 2, max = 12)
 
 # ui
 ui <- tagList(
@@ -69,90 +69,13 @@ ui <- tagList(
         tags$title("Test")
     ),
     set_doc_attribs(),
-    devProgressBar$bar(
-        inputId = "dev-progress-bar",
-        fixed = TRUE,
-        fill = "#2d7ddd"
-    ),
     container(
         page(
-            inputId = "accordion-section",
-            classnames = "test",
-            tags$h1("iceComponents Development & Testing"),
-            tags$h2("Accordion (non-input)"),
-            accordion(
-                inputId = "what-is-shiny",
-                title = "What is Shiny?",
-                content = tagList(
-                    tags$p(
-                        "Shiny is an R package that makes it easy to build ",
-                        "interactive web apps straight from R. You can host",
-                        "standalone apps on a webpage or embed them in R",
-                        "Markdown documents or build dashboards. You can also",
-                        "extend your Shiny apps with CSS themes, htmlwidgets",
-                        "and JavaScript actions."
-                    ),
-                    tags$cite("@rstudio")
-                )
-            ),
-            tags$button(
-                id = "decreaseProgressbar",
-                class = "shiny-bound-input action-button",
-                "Previous"
-            ),
-            tags$button(
-                id = "updateProgressbar",
-                class = "shiny-bound-input action-button",
-                "Next"
-            )
+            inputId = "component-tests",
+            class = "test",
+            tags$h2("Component Tests", style = "text-align: center;"),
+            error_text(inputId = "server-error")
         )
-        #     tags$h2("Accordion (input)"),
-        #     accordion_input(
-        #         inputId = "do-you-use-shiny",
-        #         title = "Do you like the Shiny R package?",
-        #         content = tagList(
-        #             tags$p(
-        #                 "Shiny is an R package that makes it easy to build ",
-        #                 "interactive web apps straight from R. You can host",
-        #                 "standalone apps on a webpage or embed them in R",
-        #                 "Markdown documents or build dashboards. You can also",
-        #                 "extend your Shiny apps with CSS themes, htmlwidgets",
-        #                 "and JavaScript actions."
-        #             ),
-        #             tags$cite("@rstudio")
-        #         )
-        #     )
-        # ),
-        # tags$section(
-        #     tags$h2("Input Fields"),
-        #     input(
-        #         inputId = "user",
-        #         type = "text",
-        #         label = "Username",
-        #         icon = rheroicons::rheroicon(name = "user_circle")
-        #     ),
-        #     input(
-        #         inputId = "pwd",
-        #         type = "password",
-        #         label = "Password",
-        #         icon = rheroicons::rheroicon(name = "lock_closed")
-        #     ),
-        #     tags$button(
-        #         id = "clear",
-        #         class = "shiny-bound-input action-button",
-        #         "Clear"
-        #     ),
-        #     tags$button(
-        #         id = "reset",
-        #         class = "shiny-bound-input action-button",
-        #         "Reset"
-        #     ),
-        #     tags$button(
-        #         id = "invalidate",
-        #         class = "shiny-bound-input action-button",
-        #         "Invalidate"
-        #     )
-        # ),
     ),
     tags$script(src = "iceComponents/iceComponents.min.js")
 )
@@ -160,29 +83,15 @@ ui <- tagList(
 # server
 server <- function(input, output, session) {
 
-    observeEvent(input$decreaseProgressbar, devProgressBar$decrease())
-    observeEvent(input$updateProgressbar, devProgressBar$increase())
+    err <- function() {
+        Sys.sleep(2)
+        show_error_text(
+            inputId = "server-error",
+            error = "Internal Server Error (500)"
+        )
+    }
 
-    # observeEvent(input$clear, {
-    #     clear_input(inputId = "user")
-    #     clear_input(inputId = "pwd")
-    # })
-
-    # observeEvent(input$reset, {
-    #     reset_input(inputId = "user")
-    #     reset_input(inputId = "pwd")
-    # })
-
-    # observeEvent(input$invalidate, {
-    #     invalidate_input(
-    #         inputId = "user",
-    #         error = "username is wrong"
-    #     )
-    #     invalidate_input(
-    #         inputId = "pwd",
-    #         error = "Password is wrong"
-    #     )
-    # })
+    err()
 }
 
 

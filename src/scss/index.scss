@@ -6,6 +6,8 @@ $primary: hsl(231, 41%, 47%);
 $primary-light: hsla(231, 41%, 47%, 0.2);
 $light: #f6f6f6;
 $semi-light: #c2cad6;
+$error: hsl(9, 83%, 45%);
+$error-accent: hsla(9, 83%, 45%, 0.08);
 
 // $primary: #0C008C; // $purple-900
 // $primary-light: #C4C6FF; // $purple-100
@@ -23,4 +25,4 @@ $breakpoint-sm: 517px;
 
 
 // import components
-@import "_main", "_progressbar", "_accordion", "_checkbox_group", "_inputs";
+@import "_main", "_progressbar", "_accordion", "_cards", "_checkbox_group", "_inputs", "_errors";
