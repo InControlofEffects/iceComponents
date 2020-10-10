@@ -6,7 +6,7 @@
     margin: 16px auto;
     box-sizing: content-box;
     padding: 16px 12px;
-    border-radius: 12px;
+    border-radius: $border-radius;
     border: 2px solid transparent;
     background-color: #ffffff;
     color: $text;
@@ -20,6 +20,14 @@
 
     .ice__card__label {
         word-break: normal;
-        text-overflow: ellipsis;
+    }
+}
+
+.card__group {
+    .ice__card {
+        width: 70%;
+        @media screen and (min-width: $breakpoint-sm) {
+            max-width: $breakpoint-sm;
+        }
     }
 }
