@@ -17,7 +17,7 @@
 #' @export
 use_iceComponents <- function() {
     htmltools::htmlDependency(
-        version = "0.0.6",
+        version = "0.0.7",
         name = "iceComponents",
         src = "iceComponents/public/",
         package = "iceComponents",

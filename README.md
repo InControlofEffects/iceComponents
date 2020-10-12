@@ -40,12 +40,15 @@ ui <- tagList(
 | `use_iceComponents` | --- | Load package assets into the client (required).
 | `accordion` | `inputId`, `title`, `content`, `heading_level`, `class` | Create a collapsible section.
 | `accordion_input` | `inputId`, `title`, `content`, `checked`, `class` | Create a collapsible section with checkbox input.
+| `back_btn` | `inputId`, `label` | create back button for page navigation
 | `checkbox_group` | `inputId`, `title`, `caption`, `choices`, `values`, `checked` | Create a series of checkboxes
 | `card` | `inputId`, `text`, `icon_name`, `icon_type` | display a text card
 | `card_group` | `...`, `class` | a container for multiple cards
 | `container` | `class`, `...` | a generic container for writing pages into
 | `error_box` | `inputId`, `class`, `icon_name`, `icon_type` | create an error message container
+| `forward_btn` | `inputId`, `label` | create forward button (i.e., next page) for page navigation
 | `input` | `inputId`, `label`, `type`, `icon` | create an input element
+| `navigation` | `...` | create a page naviation component (use `back_btn` and/or `forward_btn`)
 | `page` | `inputId`, `class`, `...` | a container for creating pages
 | `progress` | ... | an R6 class for creating progressbars
 | `set_doc_attribs` | `lang`, `dir` | set attributes in the `<html>` element

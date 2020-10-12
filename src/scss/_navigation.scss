@@ -1,0 +1,139 @@
+// navigation buttons
+.ice__btn {
+    display: block;
+	position: relative;
+	margin: 12px 0;
+	padding: 8px 16px;
+	background-size: border-box;
+	background-color: transparent;
+	border: 2px solid transparent;
+	font-size: 12pt;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 600;
+	text-align: center;
+	cursor: pointer;
+    border-radius: 4px;
+    
+    &.btn__primary {
+        background-color: $primary;
+        color: #ffffff;
+    }
+
+    &.btn__default {
+        background-color: transparent;
+        color: $primary;
+        border-color: $primary;
+    }
+
+    .rheroicons {
+		display: inline-block;
+		position: relative;
+		top: 3px;
+		width: 18px;
+		height: 18px;
+    }
+    
+    &:focus, &:hover {
+        text-decoration: underline;
+    }
+}
+
+
+
+// page navigation
+.nav__container {
+	display: block;
+	padding: 0;
+	margin: 0;
+	margin-top: 16px;
+
+	.nav__list {
+		list-style: none;
+		display: block;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap-reverse;
+
+		&.single__list {
+			.nav__list__item {
+				display: block;
+				width: 100%;
+				margin: 0;
+
+				.ice__btn {
+					width: 100%;
+					margin: 0;
+				}
+			}
+		}
+
+		&.multi__list {
+			.nav__list__item {
+				display: block;
+				width: 100%;
+				
+				.ice__btn {
+                    width: 100%;	
+                    margin: 0;
+                    
+                    &:last-child {
+                        margin-bottom: 12px;
+                    }
+                }
+			}
+		}
+	}
+}
+
+@media (min-width: 636px) {
+	.nav__container {
+		.nav__list {
+			&.single__list {
+				align-items: center;
+				justify-content: flex-end;
+
+				.nav__list__item {
+					display: flex;
+					justify-content: flex-end;
+					.ice__btn {
+                        width: 250px;
+                        margin: 0;
+					}
+				}
+			}
+
+			&.multi__list {
+				.nav__list__item {
+					display: inline-block;
+					width: 50%;
+					margin: 0;
+
+					.ice__btn {
+                        width: 250px;
+                        margin: 0;
+					}
+					&:nth-child(1) {
+						display: flex;
+						justify-content: flex-start;
+					}
+					&:nth-child(2) {
+						display: flex;
+						justify-content: flex-end;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: $breakpoint) {
+	.nav__container {
+		width: 100%;
+		max-width: $breakpoint;
+		margin: 0;
+		padding: 1em 0;
+	}
+}
