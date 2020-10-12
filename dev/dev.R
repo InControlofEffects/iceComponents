@@ -2,7 +2,7 @@
 #' FILE: dev.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-10-10
+#' MODIFIED: 2020-10-12
 #' PURPOSE: package manager
 #' STATUS: ongoing
 #' PACKAGES: usethis; remotes; pkgbump
@@ -82,4 +82,4 @@ pkgbump::set_pkgbump(
     )
 )
 
-pkgbump::pkgbump(version = "0.0.6")
+pkgbump::pkgbump(version = "0.0.7")

@@ -73,8 +73,12 @@ ui <- tagList(
         page(
             inputId = "component-tests",
             class = "test",
-            tags$h2("Component Tests", style = "text-align: center;"),
-            error_text(inputId = "server-error")
+            tags$h2("Count by 5's", style = "text-align: center;"),
+            uiOutput("count", style = "text-align: center"),
+            navigation(
+                back_btn(inputId = "subtract", label = "Subtract 5"),
+                forward_btn(inputId = "add", label = "Add 5")
+            )
         )
     ),
     tags$script(src = "iceComponents/iceComponents.min.js")
@@ -82,16 +86,18 @@ ui <- tagList(
 
 # server
 server <- function(input, output, session) {
+    counter <- reactiveVal(25)
+    output$count <- renderUI(tags$p(counter()))
 
-    err <- function() {
-        Sys.sleep(2)
-        show_error_text(
-            inputId = "server-error",
-            error = "Internal Server Error (500)"
-        )
-    }
+    observeEvent(input$subtract, {
+        counter(counter() - 5)
+        output$count <- renderUI(tags$p(counter()))
+    })
 
-    err()
+    observeEvent(input$add, {
+        counter(counter() + 5)
+        output$count <- renderUI(tags$p(counter()))
+    })
 }
 
 
