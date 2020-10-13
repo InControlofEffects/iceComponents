@@ -68,7 +68,7 @@ navigation <- function(...) {
 #' @param inputId a unique Id for the button (default `backBtn`)
 #' @param label customize the button (default `Previous`)
 #'
-#' @noRd
+#' @export
 back_btn <- function(inputId = "backBtn", label = "Previous") {
     tags$button(
         id = inputId,
@@ -92,7 +92,7 @@ back_btn <- function(inputId = "backBtn", label = "Previous") {
 #' @param inputId a unique Id for the button (default `forwardBtn`)
 #' @param label set the button label (default `Next`)
 #'
-#' @noRd
+#' @export
 forward_btn <- function(inputId = "forwardBtn", label = "Next") {
     tags$button(
         id = inputId,
