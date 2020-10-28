@@ -77,7 +77,7 @@ back_btn <- function(inputId = "backBtn", label = "Previous") {
             name = "chevron_left",
             type = "outline"
         ),
-        label
+        tags$span(class = "btn__label", label)
     )
 }
 
@@ -97,7 +97,7 @@ forward_btn <- function(inputId = "forwardBtn", label = "Next") {
     tags$button(
         id = inputId,
         class = "shiny-bound-input action-button ice__btn btn__primary",
-        label,
+        tags$span(class = "btn__label", label),
         rheroicons::rheroicon(
             name = "chevron_right",
             type = "outline"
