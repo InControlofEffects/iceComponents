@@ -1,4 +1,8 @@
 .ice__card {
+    --card-background: var(--grey-000);
+    --card-border: var(--grey-200);
+    --card-text: var(--grey-800);
+
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -7,9 +11,9 @@
     box-sizing: content-box;
     padding: 16px 12px;
     border-radius: $border-radius;
-    border: 2px solid transparent;
-    background-color: #ffffff;
-    color: $text;
+    border: 2px solid var(--card-border);
+    background-color: var(--card-background);
+    color: var(--card-text);
     box-shadow: $box-shadow;
 
     .rheroicons {

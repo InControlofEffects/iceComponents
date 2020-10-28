@@ -1,5 +1,9 @@
 // navigation buttons
 .ice__btn {
+
+	--btn-primary: var(--primary);
+	--btn-text: var(--grey-000);
+
     display: block;
 	position: relative;
 	margin: 12px 0;
@@ -16,14 +20,14 @@
     border-radius: 4px;
     
     &.btn__primary {
-        background-color: $primary;
-        color: #ffffff;
+		background-color: var(--btn-primary);
+		color: var(--btn-text);
     }
 
     &.btn__default {
         background-color: transparent;
-        color: $primary;
-        border-color: $primary;
+        color: var(--btn-primary);
+        border-color: var(--btn-primary);
     }
 
     .rheroicons {

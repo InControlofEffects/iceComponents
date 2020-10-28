@@ -1,11 +1,16 @@
 // accordion component
 .accordion {
+	--accordion-primary: var(--primary);
+	--accordion-background: var(--grey-000);
+	--accordion-border: transparent;
+	--accordion-color: inherit;
+
 	font-family: inherit;
-	background-color: inherit;
+	background-color: var(--accordion-background);
 	box-sizing: border-box;
-	color: inherit;
+	color: var(--accordion-color);
 	margin: 16px 0;
-	border: 3px solid transparent;
+	border: 2px solid var(--accordion-border);
 
 	// accordion heading styles (includes button)
 	.accordion__heading {
@@ -157,14 +162,14 @@
 				width: 32px;
 				height: 32px;
 				border-radius: 50%;
-				background-color: $primary;
+				background-color: var(--accordion-primary);
 				z-index: 0;
 				opacity: 0;
 			}
 
 			&:hover, &:focus {
 				.toggle__icon {
-					color: $light;
+					color: var(--grey-050);
 				}
 
 				&:after {
@@ -202,17 +207,17 @@
 			padding: 8px 12px;
 
 			&.accordion__checked {
-				background-color: $primary;
-				color: $light;
+				background-color: var(--accordion-primary);
+				color: var(--grey-050);
 
 				.accordion__toggle {
 					&:after {
-						background-color: $light;
+						background-color: var(--grey-050);
 					}
 
 					&:hover, &:focus {
 						.toggle__icon {
-							color: $primary;
+							color: var(--accordion-primary);
 						}
 					}
 				}
@@ -222,7 +227,7 @@
 
 	// focused
 	&.accordion__focused {
-		border: 2px solid $primary;
+		border: 2px solid var(--accordion-primary);
 	}
 }
 
