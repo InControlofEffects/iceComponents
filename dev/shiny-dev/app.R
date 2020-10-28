@@ -45,7 +45,7 @@ addResourcePath(
 
 # create app
 
-#' devProgressBar <- progressbar(start = 2, max = 12)
+devProgressBar <- progressbar(start = 2, max = 12)
 
 # ui
 ui <- tagList(
@@ -64,10 +64,17 @@ ui <- tagList(
                 font-size: 16pt;
                 padding: 0;
                 margin: 0;
+            }",
+            ":root {
+                --primary: #06D6A0;
+            }",
+            ".ice__card {
+                --card-text: var(--primary);
             }"
         ),
         tags$title("Test")
     ),
+    devProgressBar$bar(inputId = "test", fixed = TRUE),
     set_doc_attribs(),
     container(
         page(
@@ -78,6 +85,36 @@ ui <- tagList(
             navigation(
                 back_btn(inputId = "subtract", label = "Subtract 5"),
                 forward_btn(inputId = "add", label = "Add 5")
+            ),
+            tags$p(
+                stringi::stri_rand_lipsum(1)
+            ),
+            input(
+                inputId = "usr",
+                label = "Enter your username",
+                icon = rheroicons::rheroicon("user")
+            ),
+            input(
+                inputId = "nname",
+                label = "Enter your nickname",
+                icon = rheroicons::rheroicon("emoji_happy")
+            ),
+            card(
+                inputId = "test",
+                text = "Colors",
+                icon_name = "color_swatch"
+            ),
+            error_box(inputId = "error"),
+            error_text(inputId = "errMsg"),
+            accordion(
+                inputId = "ac",
+                title = "Hello World!",
+                content = "this is an example"
+            ),
+            accordion_input(
+                inputId = "acc",
+                title = "Some input",
+                content = "this is an example"
             )
         )
     ),
@@ -98,6 +135,10 @@ server <- function(input, output, session) {
         counter(counter() + 5)
         output$count <- renderUI(tags$p(counter()))
     })
+
+    # show_error_box("error", "Error (1245): user not authorized")
+    # show_error_text("errMsg", "Error (1245): user not authorized")
+    invalidate_input("usr", "Error")
 }
 
 

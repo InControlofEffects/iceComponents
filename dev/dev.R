@@ -82,4 +82,4 @@ pkgbump::set_pkgbump(
     )
 )
 
-pkgbump::pkgbump(version = "0.0.7")
+pkgbump::pkgbump(version = "0.0.8")
