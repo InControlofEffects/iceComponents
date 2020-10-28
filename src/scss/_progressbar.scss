@@ -8,7 +8,11 @@
 .progressbar {
     display: block;
     width: 100%;
-    background-color: transparent;
+    background-color: var(--grey-000);
+
+    @media screen and (min-width: $breakpoint) {
+        background-color: var(--grey-050);
+    }
     
     // additional container classes
     // fixed position
@@ -33,7 +37,7 @@
     // progress bar
     .bar {
         height: 13px;
-        background-color: #bdbdbd;
+        background-color: var(--primary);
         transform: scaleX(0);
         transform-origin: 0 50%;
         transition: all 1s ease-in-out;

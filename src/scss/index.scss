@@ -1,28 +1,55 @@
 
-// define vars
-$dark: #252525;
-$text: #3f454b;
-$primary: hsl(231, 41%, 47%);
-$primary-light: hsla(231, 41%, 47%, 0.2);
-$light: #f6f6f6;
-$semi-light: #c2cad6;
-$error: hsl(9, 83%, 45%);
-$error-accent: hsla(9, 83%, 45%, 0.08);
+// set colors
+$primary: #4755a9;
 
-// $primary: #0C008C; // $purple-900
-// $primary-light: #C4C6FF; // $purple-100
-// $light: #F0F4F8; // $blue-grey-050
-// $semi-light: #9FB3C8; // $blue-grey-100
-$error: hsl(9, 83%, 45%);
+$grey-000: #ffffff;
+$grey-050: #f6f6f6;
+$grey-100: #e1e1e1;
+$grey-200: #cbcbcb;
+$grey-300: #b6b6b6;
+$grey-400: #a0a0a0;
+$grey-500: #8b8b8b;
+$grey-600: #757575;
+$grey-700: #606060;
+$grey-800: #4a4a4a;
+$grey-900: #353535;
 
+$error-900: #B93213;
+$error-050: #FDEFEC;
+
+// set other vars
 $border-radius: 6px;
+
+// shadows
 $shadow: hsla(0, 0%, 0%, 0.2);
 $primary-box-shadow: 0 0 6px 2px $primary;
+
+
 $box-shadow: 0 0 6px 4px hsla(0, 0%, 0%, 0.2);
 $leftOffest: 21px;
+
+// generic breakpoints
 $breakpoint: 972px;
 $breakpoint-sm: 517px; 
 
+// expose scss vars
+:root {
+    --primary: #{$primary};
+    --error-900: #{$error-900};
+    --error-050: #{$error-050};
+    --grey-000: #{$grey-000};
+    --grey-050: #{$grey-050};
+    --grey-100: #{$grey-100};
+    --grey-200: #{$grey-200};
+    --grey-300: #{$grey-300};
+    --grey-400: #{$grey-400};
+    --grey-500: #{$grey-500};
+    --grey-600: #{$grey-600};
+    --grey-700: #{$grey-700};
+    --grey-800: #{$grey-800};
+    --grey-900: #{$grey-900};
+}
 
-// import components
+
+// import modules
 @import "_main", "_navigation", "_progressbar", "_accordion", "_cards", "_checkbox_group", "_inputs", "_errors";
