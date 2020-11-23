@@ -25,3 +25,4 @@
 ^postcss\.config\.js$
 ^webpack\.config\.js$
 ^src$
+^pkgbump\.config\.json$
