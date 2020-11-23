@@ -68,3 +68,35 @@ ui <- tagList(
 | `show_error_box` | `inputId`, `error` | update and show an error box
 | `hide_error_box` | `inputId` | hide an error box
 | `update_card` | `inputId` | modify the text of a text card
+
+### Accounts Management
+
+In addition to the functions above, there is also the `accounts` class. This object contains a series of methods for managing user accounts.
+
+```r
+# create new instance
+db <- iceComponents::accounts$new()
+
+# define instance configuration
+db$config(
+    name = "my-app-accounts",
+    version = "1.0.0"
+)
+
+# add user
+db$add_user(
+    username = "myCoolName",
+    password = "test",
+    type = "standard"
+)
+
+# change password for `test`
+db$reset_password(
+    username = "myCoolName",
+    password = "new-pwd"
+)
+
+# save and view
+db$print_data()
+db$save_data(dir = "data/")
+```
