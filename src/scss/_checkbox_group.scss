@@ -1,5 +1,9 @@
 // checkbox group
 .checkbox__group {
+    --checkbox-primary: var(--primary);
+    --checkbox-text: var(--grey-900);
+    --checkbox-light: var(--grey-050);
+
     border: 0;
     padding: 0;
     margin: 0;
@@ -11,7 +15,7 @@
         margin: 0;
         padding: 0;
         line-height: 1.3;
-        color: $dark;
+        color: var(--checkbox-text);
     }
 
     // caption
@@ -20,7 +24,7 @@
         padding: 0;
         margin: 0;
         line-height: 1.3;
-        color: $text;
+        color: var(--checkbox-text);
     }
 
     // checkbox option
@@ -59,8 +63,8 @@
                     margin-right: 10px;
                     width: 18px;
                     height: 18px;
-                    background-color: $light;
-                    border: $light solid 1px;
+                    background-color: var(--checkbox-light);
+                    border: var(--checkbox-light) solid 1px;
                     border-radius: 2px;
                 }
 
@@ -83,10 +87,10 @@
             &:checked {
                 + .option__label {
                     &::before {
-                        background-color: $primary;
+                        background-color: var(--checkbox-primary);
                     }
                     &::after {
-                        color: $light;
+                        color: var(--checkbox-light);
                         opacity: 1;
                     }
                 }
@@ -95,8 +99,8 @@
             &:focus {
                 + .option__label {
                     &::before {
-                        border: $primary solid 1px;
-                        box-shadow: $primary-box-shadow;
+                        border: var(--checkbox-primary) solid 1px;
+                        box-shadow: $box-shadow;
                     }
                 }
             }

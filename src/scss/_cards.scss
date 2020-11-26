@@ -1,0 +1,37 @@
+.ice__card {
+    --card-background: var(--grey-000);
+    --card-border: var(--grey-200);
+    --card-text: var(--grey-800);
+
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 16px auto;
+    box-sizing: content-box;
+    padding: 16px 12px;
+    border-radius: $border-radius;
+    border: 2px solid var(--card-border);
+    background-color: var(--card-background);
+    color: var(--card-text);
+    box-shadow: $box-shadow;
+
+    .rheroicons {
+        width: 30px;
+        height: 30px;
+        margin: 0 12px;
+    }
+
+    .ice__card__label {
+        word-break: normal;
+    }
+}
+
+.card__group {
+    .ice__card {
+        width: 70%;
+        @media screen and (min-width: $breakpoint-sm) {
+            max-width: $breakpoint-sm;
+        }
+    }
+}

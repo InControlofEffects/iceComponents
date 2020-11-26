@@ -2,7 +2,7 @@
 #' FILE: dev.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-09-26
+#' MODIFIED: 2020-11-23
 #' PURPOSE: package manager
 #' STATUS: ongoing
 #' PACKAGES: usethis; remotes; pkgbump
@@ -35,11 +35,11 @@ usethis::use_build_ignore(
         gitignore,
         "config",
         "dev",
-        "inst/iceComponents/src",
+        "src",
         "node_modules",
         ".babelrc",
         ".gitignore",
-        ".pkgbump.json",
+        "pkgbump.config.json",
         ".Rbuildignore",
         ".travis.yml",
         "iceComponents.code-workspace",
@@ -61,6 +61,7 @@ remotes::install_github("davidruvolo51/rheroicons")
 usethis::use_package(package = "shiny", min_version = TRUE)
 usethis::use_package(package = "htmltools", min_version = TRUE)
 usethis::use_package(package = "rheroicons", min_version = TRUE)
+usethis::use_package(package = "R6")
 
 # document
 devtools::check_man()
@@ -82,4 +83,4 @@ pkgbump::set_pkgbump(
     )
 )
 
-pkgbump::pkgbump(version = "0.0.3")
+pkgbump::pkgbump(version = "0.0.9")

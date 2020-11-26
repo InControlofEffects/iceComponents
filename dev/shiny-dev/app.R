@@ -2,7 +2,7 @@
 #' FILE: app.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-09-26
+#' MODIFIED: 2020-10-10
 #' PURPOSE: a dev app for developing and debugging components
 #' STATUS: ongoing
 #' PACKAGES: see below
@@ -45,6 +45,8 @@ addResourcePath(
 
 # create app
 
+devProgressBar <- progressbar(start = 2, max = 12)
+
 # ui
 ui <- tagList(
     tags$head(
@@ -60,113 +62,83 @@ ui <- tagList(
             "html, body {
                 font-family: Helvetica;
                 font-size: 16pt;
+                padding: 0;
+                margin: 0;
             }",
-            "main {
-                width: 90%;
-                max-width: 972px;
-                margin: 0 auto;
+            ":root {
+                --primary: #06D6A0;
+            }",
+            ".ice__card {
+                --card-text: var(--primary);
             }"
         ),
         tags$title("Test")
     ),
-    tags$main(
-        tags$h1("iceComponents Development & Testing"),
-        tags$section(
-            tags$h2("Accordion (non-input)"),
+    devProgressBar$bar(inputId = "test", fixed = TRUE),
+    set_doc_attribs(),
+    container(
+        page(
+            inputId = "component-tests",
+            class = "test",
+            tags$h2("Count by 5's", style = "text-align: center;"),
+            uiOutput("count", style = "text-align: center"),
+            navigation(
+                back_btn(inputId = "subtract", label = "Subtract 5"),
+                forward_btn(inputId = "add", label = "Add 5")
+            ),
+            tags$p(
+                stringi::stri_rand_lipsum(1)
+            ),
+            input(
+                inputId = "usr",
+                label = "Enter your username",
+                icon = rheroicons::rheroicon("user")
+            ),
+            input(
+                inputId = "nname",
+                label = "Enter your nickname",
+                icon = rheroicons::rheroicon("emoji_happy")
+            ),
+            card(
+                inputId = "test",
+                text = "Colors",
+                icon_name = "color_swatch"
+            ),
+            error_box(inputId = "error"),
+            error_text(inputId = "errMsg"),
             accordion(
-                inputId = "what-is-shiny",
-                title = "What is Shiny?",
-                content = tagList(
-                    tags$p(
-                        "Shiny is an R package that makes it easy to build ",
-                        "interactive web apps straight from R. You can host",
-                        "standalone apps on a webpage or embed them in R",
-                        "Markdown documents or build dashboards. You can also",
-                        "extend your Shiny apps with CSS themes, htmlwidgets",
-                        "and JavaScript actions."
-                    ),
-                    tags$cite("@rstudio")
-                )
-            )
-        ),
-        tags$section(
-            tags$h2("Accordion (input)"),
+                inputId = "ac",
+                title = "Hello World!",
+                content = "this is an example"
+            ),
             accordion_input(
-                inputId = "do-you-use-shiny",
-                title = "Do you like the Shiny R package?",
-                content = tagList(
-                    tags$p(
-                        "Shiny is an R package that makes it easy to build ",
-                        "interactive web apps straight from R. You can host",
-                        "standalone apps on a webpage or embed them in R",
-                        "Markdown documents or build dashboards. You can also",
-                        "extend your Shiny apps with CSS themes, htmlwidgets",
-                        "and JavaScript actions."
-                    ),
-                    tags$cite("@rstudio")
-                )
+                inputId = "acc",
+                title = "Some input",
+                content = "this is an example"
             )
-        ),
-        tags$section(
-            tags$h2("Input Fields"),
-            input(
-                inputId = "user",
-                type = "text",
-                label = "Username",
-                icon = rheroicons::rheroicon(name = "user_circle")
-            ),
-            input(
-                inputId = "pwd",
-                type = "password",
-                label = "Password",
-                icon = rheroicons::rheroicon(name = "lock_closed")
-            ),
-            tags$button(
-                id = "clear",
-                class = "shiny-bound-input action-button",
-                "Clear"
-            ),
-            tags$button(
-                id = "reset",
-                class = "shiny-bound-input action-button",
-                "Reset"
-            ),
-            tags$button(
-                id = "invalidate",
-                class = "shiny-bound-input action-button",
-                "Invalidate"
-            )
-        ),
+        )
     ),
     tags$script(src = "iceComponents/iceComponents.min.js")
 )
 
 # server
 server <- function(input, output, session) {
-    observe({
-        print(input$pwd)
+    counter <- reactiveVal(25)
+    output$count <- renderUI(tags$p(counter()))
+
+    observeEvent(input$subtract, {
+        counter(counter() - 5)
+        output$count <- renderUI(tags$p(counter()))
     })
 
-    observeEvent(input$clear, {
-        clear_input(inputId = "user")
-        clear_input(inputId = "pwd")
+    observeEvent(input$add, {
+        counter(counter() + 5)
+        output$count <- renderUI(tags$p(counter()))
     })
 
-    observeEvent(input$reset, {
-        reset_input(inputId = "user")
-        reset_input(inputId = "pwd")
-    })
-
-    observeEvent(input$invalidate, {
-        invalidate_input(
-            inputId = "user",
-            error = "username is wrong"
-        )
-        invalidate_input(
-            inputId = "pwd",
-            error = "Password is wrong"
-        )
-    })
+    # show_error_box("error", "Error (1245): user not authorized")
+    # show_error_text("errMsg", "Error (1245): user not authorized")
+    invalidate_input("usr", "Error")
 }
 
 

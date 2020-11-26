@@ -1,0 +1,45 @@
+
+// parent element
+.progressbar__parent {
+    position: relative;
+}
+
+// progress bar
+.progressbar {
+    display: block;
+    width: 100%;
+    background-color: var(--grey-000);
+
+    @media screen and (min-width: $breakpoint) {
+        background-color: var(--grey-050);
+    }
+    
+    // additional container classes
+    // fixed position
+    &.progressbar__fixed {
+        position: fixed;
+        z-index: 10;
+    }
+    
+    // position: fixed + top
+    &.position__top {
+        top: 0;
+        left: 0;
+    }
+
+    // position: fixed + bottom
+    .position__bottom {
+        bottom: 0;
+        left: 0;
+    }
+
+    /////////////////////////////////////////////
+    // progress bar
+    .bar {
+        height: 13px;
+        background-color: var(--primary);
+        transform: scaleX(0);
+        transform-origin: 0 50%;
+        transition: all 1s ease-in-out;
+    }
+}
