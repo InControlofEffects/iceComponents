@@ -59,12 +59,12 @@ error_box <- function(
     css <- "error__box error__hidden"
     if (!is.null(class)) css <- paste0(css, " ", class)
 
-    tags$div(
+    htmltools::tags$div(
         id = inputId,
         class = css,
         role = "alert",
         rheroicons::rheroicon(name = icon_name, type = icon_type),
-        tags$span(class = "error__box__text")
+        htmltools::tags$span(class = "error__box__text")
     )
 }
 

@@ -54,7 +54,7 @@ card <- function(
     css <- "ice__card"
     if (!is.null(class)) css <- paste0(css, " ", class)
 
-    tags$div(
+    htmltools::tags$div(
         id = inputId,
         class = css,
         rheroicons::rheroicon(
@@ -62,7 +62,7 @@ card <- function(
             type = icon_type,
             classnames = "ice__card__icon"
         ),
-        tags$p(
+        htmltools::tags$p(
             class = "ice__card__label",
             htmltools::HTML(text)
         )

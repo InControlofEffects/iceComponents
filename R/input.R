@@ -9,7 +9,6 @@
 #' @param type input type (password or text)
 #' @param icon an rheroicons icon
 #'
-#' @importFrom htmltools tags tagList
 #' @export
 input <- function(inputId, label, type = "text", icon = NULL) {
 
@@ -25,22 +24,22 @@ input <- function(inputId, label, type = "text", icon = NULL) {
     }
 
     # generate markup
-    tagList(
-        tags$label(
+    htmltools::tagList(
+        htmltools::tags$label(
             id = ids$label,
             class = "field__label",
             `for` = inputId,
             label
         ),
-        tags$span(
+        htmltools::tags$span(
             id = ids$error,
             role = "alert",
             class = "field__status"
         ),
-        tags$div(
+        htmltools::tags$div(
             class = "field__icon__input",
             icon,
-            tags$input(
+            htmltools::tags$input(
                 id = inputId,
                 type = type,
                 class = paste0("field__input field__", type),

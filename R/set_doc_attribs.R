@@ -25,7 +25,7 @@ set_doc_attribs <- function(lang = "en", dir = "ltr") {
         }
     )
 
-    tags$span(
+    htmltools::tags$span(
         id = "icecomponents__meta",
         style = "display: none;",
         `data-html-lang` = lang,

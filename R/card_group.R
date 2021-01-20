@@ -58,5 +58,5 @@
 card_group <- function(..., class = NULL) {
     css <- "card__group"
     if (!is.null(class)) css <- paste0(css, " ", class)
-    tags$div(class = css, ...)
+    htmltools::tags$div(class = css, ...)
 }

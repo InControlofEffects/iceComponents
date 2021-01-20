@@ -146,7 +146,7 @@ pbar <- R6::R6Class(
             f <- private$update__ariatext()
 
             # build progress bar
-            pb <- tags$div(
+            pb <- htmltools::tags$div(
                     id = inputId,
                     class = css,
                     role = "progressbar",
@@ -154,7 +154,7 @@ pbar <- R6::R6Class(
                     `aria-valuemin` = self$min,
                     `aria-valuemax` = self$max,
                     `aria-valuetext` = f,
-                    tags$div(class = "bar")
+                    htmltools::tags$div(class = "bar")
             )
 
             # process background color

@@ -45,7 +45,7 @@ error_text <- function(inputId, class = NULL) {
     stopifnot("`inputId` must be a string" = is.character(inputId))
     css <- "error__text error__text__hidden"
     if (!is.null(class)) css <- paste0(css, " ", class)
-    tags$span(id = inputId, class = css)
+    htmltools::tags$span(id = inputId, class = css)
 }
 
 
