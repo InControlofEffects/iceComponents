@@ -2,7 +2,7 @@
 #' FILE: test-layouts-page.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-10-08
-#' MODIFIED: 2020-10-08
+#' MODIFIED: 2021-03-27
 #' PURPOSE: unit tests for page component
 #' STATUS: working
 #' PACKAGES: usethis; iceComponents
@@ -24,7 +24,7 @@ test_that("Default use is valid", {
             p$attribs$class
         ),
         expected = c(
-            "article",
+            "div",
             "id",
             "class",
             "test-page",
