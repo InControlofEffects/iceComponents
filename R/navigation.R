@@ -57,7 +57,7 @@ navigation <- function(...) {
     if (length(elems) == 1) u$attribs$class <- "nav__list single__list"
     if (length(elems) > 1) u$attribs$class <- "nav__list multi__list"
 
-    tags$div(class = "nav__container", u)
+    htmltools::tags$div(class = "nav__container", u)
 }
 
 

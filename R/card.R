@@ -60,7 +60,7 @@ card <- function(
         rheroicons::rheroicon(
             name = icon_name,
             type = icon_type,
-            classnames = "ice__card__icon"
+            class = "ice__card__icon"
         ),
         htmltools::tags$p(
             class = "ice__card__label",
