@@ -45,16 +45,19 @@
 #'
 #' @export
 navigation <- function(...) {
-    elems <- tagList(...)
-    u <- tags$ul()
+    elems <- htmltools::tagList(...)
+    u <- htmltools::tags$ul()
     sapply(seq_len(length(elems)), function(x) {
-        u$children[[x]] <<- tags$li(class = "nav__list__item", elems[[x]])
+        u$children[[x]] <<- htmltools::tags$li(
+            class = "nav__list__item",
+            elems[[x]]
+        )
     })
 
     if (length(elems) == 1) u$attribs$class <- "nav__list single__list"
     if (length(elems) > 1) u$attribs$class <- "nav__list multi__list"
 
-    tags$div(class = "nav__container", u)
+    htmltools::tags$div(class = "nav__container", u)
 }
 
 
@@ -70,14 +73,14 @@ navigation <- function(...) {
 #'
 #' @export
 back_btn <- function(inputId = "backBtn", label = "Previous") {
-    tags$button(
+    htmltools::tags$button(
         id = inputId,
         class = "shiny-bound-input action-button ice__btn btn__default",
         rheroicons::rheroicon(
             name = "chevron_left",
             type = "outline"
         ),
-        tags$span(class = "btn__label", label)
+        htmltools::tags$span(class = "btn__label", label)
     )
 }
 
@@ -94,10 +97,10 @@ back_btn <- function(inputId = "backBtn", label = "Previous") {
 #'
 #' @export
 forward_btn <- function(inputId = "forwardBtn", label = "Next") {
-    tags$button(
+    htmltools::tags$button(
         id = inputId,
         class = "shiny-bound-input action-button ice__btn btn__primary",
-        tags$span(class = "btn__label", label),
+        htmltools::tags$span(class = "btn__label", label),
         rheroicons::rheroicon(
             name = "chevron_right",
             type = "outline"

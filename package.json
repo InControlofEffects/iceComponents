@@ -1,6 +1,6 @@
 {
-  "name": "iceComponents",
-  "version": "0.0.9",
+  "name": "icecomponents",
+  "version": "0.1.0",
   "author": "davidruvolo51",
   "license": "MIT",
   "scripts": {
@@ -14,19 +14,22 @@
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.3.0",
-    "mini-css-extract-plugin": "^0.11.2",
+    "mini-css-extract-plugin": "^0.11.3",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "postcss-loader": "^4.0.2",
     "postcss-modules": "^3.2.2",
     "sass": "^1.26.11",
-    "sass-loader": "^10.0.2",
-    "terser-webpack-plugin": "^4.2.2",
-    "webpack": "^4.44.2",
+    "sass-loader": "^10.1.1",
+    "terser-webpack-plugin": "^4.2.3",
+    "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.1.4"
   },
-  "repository": "https://github.com/InControlofEffects/iceComponents.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InControlofEffects/iceComponents.git"
+  },
   "bugs": {
     "url": "https://github.com/InControlofEffects/iceComponents/issues"
   },
@@ -34,5 +37,12 @@
     "css",
     "r",
     "shiny"
-  ]
+  ],
+  "description": "![The In Control of Effects project](incontrolofeffects.png)",
+  "homepage": "https://github.com/InControlofEffects/iceComponents#readme",
+  "main": "postcss.config.js",
+  "directories": {
+    "man": "man",
+    "test": "tests"
+  }
 }

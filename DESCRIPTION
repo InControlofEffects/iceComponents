@@ -1,6 +1,6 @@
 Package: iceComponents
 Title: A set of custom components used in the In Control of Effects application
-Version: 0.0.9
+Version: 0.1.0
 Authors@R: 
     person(
         given = "David",
@@ -16,9 +16,9 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
-    htmltools (>= 0.5.0),
-    rheroicons (>= 0.2.3),
-    shiny (>= 1.5.0),
+    htmltools (>= 0.5.1.1),
+    rheroicons (>= 0.3.1),
+    shiny (>= 1.6.0),
     R6
 Remotes: 
     davidruvolo51/rheroicons

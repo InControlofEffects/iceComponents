@@ -2,7 +2,7 @@
 #' FILE: dev.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-11-23
+#' MODIFIED: 2021-03-27
 #' PURPOSE: package manager
 #' STATUS: ongoing
 #' PACKAGES: usethis; remotes; pkgbump
@@ -40,6 +40,7 @@ usethis::use_build_ignore(
         ".babelrc",
         ".gitignore",
         "pkgbump.config.json",
+        "pnpm-lock.yaml",
         ".Rbuildignore",
         ".travis.yml",
         "iceComponents.code-workspace",
@@ -47,15 +48,13 @@ usethis::use_build_ignore(
         "package.json",
         "postcss.config.js",
         "webpack.config.js",
-        "yarn.lock"
+        "yarn.lock",
+        ".lintr"
     )
 )
 
 #' ~ 1 ~
 #' Maintaining Package
-
-# install
-remotes::install_github("davidruvolo51/rheroicons")
 
 # declare dependencies (pkgs)
 usethis::use_package(package = "shiny", min_version = TRUE)
@@ -83,4 +82,4 @@ pkgbump::set_pkgbump(
     )
 )
 
-pkgbump::pkgbump(version = "0.0.9")
+pkgbump::pkgbump(version = "0.1.0")

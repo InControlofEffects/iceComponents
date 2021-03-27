@@ -27,8 +27,7 @@
 #' @export
 page <- function(..., inputId, class = NULL) {
     stopifnot("`inputId` is missing" = !is.null(inputId))
-
     css <- "page"
     if (!is.null(class)) css <- paste0(css, " ", class)
-    tags$article(id = inputId, class = css, ...)
+    htmltools::tags$div(id = inputId, class = css, ...)
 }

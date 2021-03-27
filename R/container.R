@@ -26,5 +26,5 @@
 container <- function(..., class = NULL) {
     css <- "main"
     if (!is.null(class)) css <- paste0(css, " ", class)
-    tags$main(id = "main", class = css, ...)
+    htmltools::tags$main(id = "main", class = css, ...)
 }
