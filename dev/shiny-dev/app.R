@@ -2,7 +2,7 @@
 #' FILE: app.R
 #' AUTHOR: David Ruvolo
 #' CREATED: 2020-07-22
-#' MODIFIED: 2020-10-10
+#' MODIFIED: 2021-03-27
 #' PURPOSE: a dev app for developing and debugging components
 #' STATUS: ongoing
 #' PACKAGES: see below
@@ -92,12 +92,12 @@ ui <- tagList(
             input(
                 inputId = "usr",
                 label = "Enter your username",
-                icon = rheroicons::rheroicon("user")
+                icon = rheroicons::rheroicon(name = "user")
             ),
             input(
                 inputId = "nname",
                 label = "Enter your nickname",
-                icon = rheroicons::rheroicon("emoji_happy")
+                icon = rheroicons::rheroicon(name = "emoji_happy")
             ),
             card(
                 inputId = "test",
