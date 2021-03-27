@@ -26,3 +26,5 @@
 ^webpack\.config\.js$
 ^src$
 ^pkgbump\.config\.json$
+^\.lintr$
+^pnpm-lock\.yaml$
